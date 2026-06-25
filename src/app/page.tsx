@@ -89,7 +89,7 @@ export default function Home() {
       />
 
       <main className="flex-grow">
-        <Hero onGoToCalculator={handleOpenDefaultInquiry} />
+        <Hero onGetQuote={handleOpenDefaultInquiry} />
         <Stats />
         <LatestProjects />
         <TimelineAndTestimonials />

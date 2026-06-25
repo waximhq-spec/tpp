@@ -119,14 +119,14 @@ export default function Header({ currentTab, onTabChange, onOpenQuote }: HeaderP
         </nav>
 
         {/* Desktop CTA Button */}
-        <a
-          href="tel:+919541831565"
+        <button
+          onClick={onOpenQuote}
           id="get-quote-nav-btn"
           className="hidden md:flex bg-primary hover:bg-primary/90 text-white font-bold text-xs px-6 py-2.5 rounded-xl transition-all shadow-md hover:shadow-lg items-center gap-1.5 cursor-pointer hover:-translate-y-0.5 transform duration-200 text-center"
         >
-          <span>Free Consultation</span>
+          <span>Get a Quote</span>
           <ArrowUpRight className="w-3.5 h-3.5" />
-        </a>
+        </button>
 
         {/* Mobile action container */}
         <div className="flex md:hidden items-center gap-2">
@@ -191,14 +191,16 @@ export default function Header({ currentTab, onTabChange, onOpenQuote }: HeaderP
               >
                 Contact Us
               </button>
-              <a
-                href="tel:+919541831565"
-                onClick={() => setMobileMenuOpen(false)}
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenQuote();
+                }}
                 id="get-quote-mobile-btn"
-                className="w-full bg-primary text-white font-bold py-3 text-center rounded-xl transition-colors mt-2 block"
+                className="w-full bg-primary text-white font-bold py-3 text-center rounded-xl transition-colors mt-2 block cursor-pointer"
               >
-                Free Consultation
-              </a>
+                Get a Quote
+              </button>
             </div>
           </motion.div>
         )}

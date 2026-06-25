@@ -2,10 +2,10 @@ import { motion } from 'motion/react';
 import { ArrowRight, ShieldCheck, Sun, Banknote, CloudSnow, Zap, Users } from 'lucide-react';
 
 interface HeroProps {
-  onGoToCalculator: () => void;
+  onGetQuote: () => void;
 }
 
-export default function Hero({ onGoToCalculator }: HeroProps) {
+export default function Hero({ onGetQuote }: HeroProps) {
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -45,14 +45,14 @@ export default function Hero({ onGoToCalculator }: HeroProps) {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
-            <a
-              href="tel:+919541831565"
+            <button
+              onClick={onGetQuote}
               id="hero-check-savings-btn"
               className="bg-primary hover:bg-primary/90 text-white font-semibold text-sm px-7 py-3.5 rounded-xl transition-all duration-200 shadow-[0_4px_20px_rgba(1,50_32,0.15)] hover:shadow-[0_6px_25px_rgba(1,50_32,0.25)] flex items-center justify-center gap-2 group cursor-pointer text-center"
             >
-              <span>Free Consultation Call</span>
+              <span>Get a Quote</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-            </a>
+            </button>
 
             <button
               onClick={() => scrollToSection('installations')}

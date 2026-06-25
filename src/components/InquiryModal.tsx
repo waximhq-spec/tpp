@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, CheckCircle2, Calendar, Phone, Mail, User, ShieldAlert, ArrowRight, Sun, Loader2 } from 'lucide-react';
+import { X, CheckCircle, Send, ArrowRight } from 'lucide-react';
 import { RooftopType } from '../types';
+import { calculateSolarPotential } from '../constants';
 
 interface InquiryModalProps {
   isOpen: boolean;
@@ -21,70 +22,75 @@ export default function InquiryModal({ isOpen, onClose, initialData }: InquiryMo
     name: '',
     phone: '',
     email: '',
-    address: '',
-    agreedToTerms: true,
-    preferredDate: new Date(Date.now() + 86400000 * 2).toISOString().split('T')[0] // 2 days in future
+    bill: 3500,
+    roofType: 'tin' as RooftopType,
+    message: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const validate = () => {
-    const newErrors: Record<string, string> = {};
-    if (!formData.name.trim()) newErrors.name = 'Full Name is required';
-    if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number is required';
-    } else if (!/^[0-9+\s-]{10,15}$/.test(formData.phone)) {
-      newErrors.phone = 'Enter a valid Indian mobile number';
+  useEffect(() => {
+    if (isOpen) {
+      setFormData({
+        name: '',
+        phone: '',
+        email: '',
+        bill: initialData?.bill || 3500,
+        roofType: (initialData?.roofType as RooftopType) || 'tin',
+        message: ''
+      });
+      setIsSuccess(false);
     }
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email address is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Enter a valid email address';
-    }
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  }, [isOpen, initialData]);
+
+  const districtId = (initialData?.district || 'Srinagar').toLowerCase();
+  const results = calculateSolarPotential(formData.bill, districtId, formData.roofType);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!validate()) return;
-
     setIsSubmitting(true);
-    // Simulate API registration to Kashmir Solar Board
+
+    const lead = {
+      id: `KSL-${Math.floor(100000 + Math.random() * 900000)}`,
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      district: initialData?.district || 'Srinagar',
+      bill: formData.bill,
+      roofType: formData.roofType,
+      systemSize: results.estimatedSize,
+      subsidy: results.subsidy,
+      address: 'Modal Submission',
+      message: formData.message,
+      date: new Date().toISOString()
+    };
+
     setTimeout(() => {
+      const existingLeads = JSON.parse(localStorage.getItem('kashmir_solar_leads') || '[]');
+      existingLeads.unshift(lead);
+      localStorage.setItem('kashmir_solar_leads', JSON.stringify(existingLeads));
+      
       setIsSubmitting(false);
       setIsSuccess(true);
-
-      // Save lead payload locally to demonstrate persistent records
-      const savedLeads = JSON.parse(localStorage.getItem('kashmir_solar_leads') || '[]');
-      const newLead = {
-        id: 'KSL-' + Math.floor(100000 + Math.random() * 900000),
-        timestamp: new Date().toISOString(),
-        ...formData,
-        ...initialData
-      };
-      savedLeads.unshift(newLead);
-      localStorage.setItem('kashmir_solar_leads', JSON.stringify(savedLeads));
 
       // Trigger standard event to refresh log lists
       window.dispatchEvent(new Event('new_lead_submitted'));
 
       // Construct and open WhatsApp pre-filled message
-      const text = `Hi, I have submitted my solar subsidy inquiry on the website with the following details:
+      const text = `Hi, I have filled out the solar inquiry form on the website with the following details:
 - *Name:* ${formData.name}
 - *Phone:* ${formData.phone}
 - *Email:* ${formData.email}
-- *Address:* ${formData.address || 'Not specified'}
-- *Preferred Visit Date:* ${formData.preferredDate}
-- *Estimated System Size:* ${initialData.systemSize} kW
-- *Estimated Subsidy:* ₹${initialData.subsidy.toLocaleString('en-IN')}
-- *Estimated Post-Solar Bill:* ₹${initialData.newBill}/month`;
-
+- *Monthly Bill:* ₹${formData.bill.toLocaleString('en-IN')}
+- *Roof Type:* ${formData.roofType.toUpperCase()}
+- *Estimated System Size:* ${results.estimatedSize} kW
+- *Estimated Subsidy:* ₹${results.subsidy.toLocaleString('en-IN')}
+- *Message:* ${formData.message || 'None'}`;
+      
       const whatsappUrl = `https://wa.me/919541831565?text=${encodeURIComponent(text)}`;
       window.open(whatsappUrl, '_blank');
-    }, 1500);
+    }, 1200);
   };
 
   return (
@@ -106,241 +112,179 @@ export default function InquiryModal({ isOpen, onClose, initialData }: InquiryMo
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.95, opacity: 0, y: 15 }}
             transition={{ type: 'spring', duration: 0.5 }}
-            className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto z-10 border border-slate-100 flex flex-col"
+            className="relative bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto z-10 border border-slate-100 p-6 md:p-8"
           >
-            {/* Header banner */}
-            <div className="bg-primary px-6 py-5 text-white relative">
-              <button
-                onClick={onClose}
-                className="absolute right-4 top-4 text-white/80 hover:text-white transition-colors"
-                id="close-modal-btn"
-              >
-                <X className="w-5 h-5" />
-              </button>
-              <div className="flex items-center gap-2 mb-1">
-                <Sun className="w-5 h-5 text-secondary-container fill-secondary-container animate-pulse" />
-                <span className="text-xs uppercase tracking-wider font-semibold text-secondary-container">Government Subsidy Application</span>
-              </div>
-              <h3 className="text-xl font-bold tracking-tight">Get Your Government Subsidy</h3>
-              <p className="text-sm text-white/80 mt-1">Submit your details to schedule a free home mapping visit and get an exact quote.</p>
-            </div>
+            {/* Close Button */}
+            <button
+              onClick={onClose}
+              className="absolute right-6 top-6 text-slate-400 hover:text-slate-600 transition-colors cursor-pointer"
+              id="close-modal-btn"
+            >
+              <X className="w-5 h-5" />
+            </button>
 
-            <div className="p-6 flex-grow">
-              <AnimatePresence mode="wait">
-                {!isSuccess ? (
-                  <motion.form
-                    key="inquiry-form"
-                    onSubmit={handleSubmit}
-                    initial={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="space-y-4"
-                  >
-                    {/* Selected System details summary */}
-                    <div className="bg-slate-50 border border-slate-100 p-4 rounded-xl flex justify-between items-center text-sm mb-2">
-                      <div>
-                        <p className="text-xs text-slate-500 font-semibold uppercase">Est. System Size</p>
-                        <p className="text-lg font-bold text-primary">{initialData.systemSize} kW</p>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-xs text-slate-500 font-semibold uppercase">Subsidy Amount</p>
-                        <p className="text-lg font-bold text-secondary">₹{initialData.subsidy.toLocaleString('en-IN')}</p>
-                      </div>
-                      <div className="text-right border-l pl-4 border-slate-200">
-                        <p className="text-xs text-slate-500 font-semibold uppercase">Post-Solar Bill</p>
-                        <p className="text-lg font-bold text-slate-800">₹{initialData.newBill}/mo</p>
-                      </div>
-                    </div>
-
-                    {/* Inputs */}
-                    <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1" htmlFor="fullName">
-                        Full Name <span className="text-red-500">*</span>
-                      </label>
-                      <div className="relative">
-                        <User className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4" />
-                        <input
-                          id="fullName"
-                          type="text"
-                          required
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          placeholder="Mohammad Abdullah"
-                          className={`w-full bg-slate-50 border ${errors.name ? 'border-red-500 ring-1 ring-red-500' : 'border-slate-200'} rounded-xl pl-10 pr-4 py-2.5 text-sm outline-none focus:bg-white focus:border-primary transition-colors`}
-                        />
-                      </div>
-                      {errors.name && <p className="text-xs text-red-500 mt-1">{errors.name}</p>}
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1" htmlFor="phone">
-                          Phone Number <span className="text-red-500">*</span>
-                        </label>
-                        <div className="relative">
-                          <Phone className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4" />
-                          <input
-                            id="phone"
-                            type="tel"
-                            required
-                            value={formData.phone}
-                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                            placeholder="+91 94190 XXXXX"
-                            className={`w-full bg-slate-50 border ${errors.phone ? 'border-red-500 ring-1 ring-red-500' : 'border-slate-200'} rounded-xl pl-10 pr-4 py-2.5 text-sm outline-none focus:bg-white focus:border-primary transition-colors`}
-                          />
-                        </div>
-                        {errors.phone && <p className="text-xs text-red-500 mt-1">{errors.phone}</p>}
-                      </div>
-
-                      <div>
-                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1" htmlFor="email">
-                          Email Address <span className="text-red-500">*</span>
-                        </label>
-                        <div className="relative">
-                          <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4" />
-                          <input
-                            id="email"
-                            type="email"
-                            required
-                            value={formData.email}
-                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            placeholder="name@example.com"
-                            className={`w-full bg-slate-50 border ${errors.email ? 'border-red-500 ring-1 ring-red-500' : 'border-slate-200'} rounded-xl pl-10 pr-4 py-2.5 text-sm outline-none focus:bg-white focus:border-primary transition-colors`}
-                          />
-                        </div>
-                        {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email}</p>}
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1" htmlFor="address">
-                        Installation/Rooftop Address <span className="text-slate-400">(Optional)</span>
-                      </label>
-                      <textarea
-                        id="address"
-                        rows={2}
-                        value={formData.address}
-                        onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                        placeholder="e.g., Nigeen Lake Road, Near Hazratbal, Srinagar"
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-sm outline-none focus:bg-white focus:border-primary transition-colors resize-none"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1" htmlFor="preferredDate">
-                        Preferred Free Site Visit Date
-                      </label>
-                      <div className="relative">
-                        <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4" />
-                        <input
-                          id="preferredDate"
-                          type="date"
-                          value={formData.preferredDate}
-                          onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
-                          className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-sm outline-none focus:bg-white focus:border-primary transition-colors"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Terms Checklist */}
-                    <div className="flex items-start gap-2 pt-2">
+            <AnimatePresence mode="wait">
+              {!isSuccess ? (
+                <motion.form 
+                  key="contact-form"
+                  onSubmit={handleSubmit}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="space-y-5"
+                >
+                  <h3 className="text-lg font-bold text-primary tracking-tight">Send a Message</h3>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1">
+                      <label htmlFor="name" className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Full Name</label>
                       <input
-                        id="agree-checkbox"
-                        type="checkbox"
-                        checked={formData.agreedToTerms}
-                        onChange={(e) => setFormData({ ...formData, agreedToTerms: e.target.checked })}
-                        className="mt-1 w-4 h-4 text-primary bg-slate-50 border-slate-200 rounded focus:ring-primary"
+                        type="text"
+                        id="name"
+                        required
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        placeholder="Bashir Ahmed"
+                        className="w-full bg-[#fafbfa] border border-slate-200 hover:border-slate-300 focus:border-primary focus:bg-white text-slate-800 placeholder-slate-400 text-xs rounded-xl px-4 py-3 focus:outline-none transition-all duration-200"
                       />
-                      <label htmlFor="agree-checkbox" className="text-xs text-slate-500 leading-snug cursor-pointer select-none">
-                        I authorize The Power Planet to schedule a free rooftop assessment and consent to receive updates regarding my Central subsidy application.
-                      </label>
+                    </div>
+                    <div className="space-y-1">
+                      <label htmlFor="phone" className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Phone Number</label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        required
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        placeholder="+91 94190 XXXXX"
+                        className="w-full bg-[#fafbfa] border border-slate-200 hover:border-slate-300 focus:border-primary focus:bg-white text-slate-800 placeholder-slate-400 text-xs rounded-xl px-4 py-3 focus:outline-none transition-all duration-200"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-1">
+                    <label htmlFor="email" className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Email Address</label>
+                    <input
+                      type="email"
+                      id="email"
+                      required
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="name@domain.com"
+                      className="w-full bg-[#fafbfa] border border-slate-200 hover:border-slate-300 focus:border-primary focus:bg-white text-slate-800 placeholder-slate-400 text-xs rounded-xl px-4 py-3 focus:outline-none transition-all duration-200"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1">
+                      <label htmlFor="bill" className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Monthly Bill (₹): ₹{formData.bill.toLocaleString()}</label>
+                      <select
+                        id="bill"
+                        value={formData.bill}
+                        onChange={(e) => setFormData({ ...formData, bill: Number(e.target.value) })}
+                        className="w-full bg-[#fafbfa] border border-slate-200 hover:border-slate-300 focus:border-primary focus:bg-white text-slate-800 text-xs rounded-xl px-4 py-3 focus:outline-none transition-all duration-200 cursor-pointer"
+                      >
+                        <option value={1500}>Under ₹2,000</option>
+                        <option value={3500}>₹2,000 - ₹5,000</option>
+                        <option value={6500}>₹5,000 - ₹8,000</option>
+                        <option value={10000}>₹8,000 - ₹12,000</option>
+                        <option value={15000}>Above ₹12,000</option>
+                      </select>
                     </div>
 
-                     {/* Submit Button */}
-                    <button
-                      type="submit"
-                      disabled={isSubmitting || !formData.agreedToTerms}
-                      id="submit-subsidy-btn"
-                      className="w-full mt-4 bg-secondary hover:bg-secondary/95 text-white disabled:opacity-50 disabled:cursor-not-allowed font-semibold py-3.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-md cursor-pointer text-sm"
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <Loader2 className="w-5 h-5 animate-spin" />
-                          <span>Submitting...</span>
-                        </>
-                      ) : (
-                        <>
-                          <span>Book Free Consultation</span>
-                          <ArrowRight className="w-4 h-4" />
-                        </>
-                      )}
-                    </button>
-
-                    <div className="flex items-center gap-1.5 justify-center text-xs text-slate-400 pt-1">
-                      <ShieldAlert className="w-3.5 h-3.5 text-emerald-600" />
-                      <span>Your details are safe with us. We are a Government approved partner.</span>
+                    <div className="space-y-1">
+                      <label htmlFor="roofType" className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Rooftop Roof Type</label>
+                      <select
+                        id="roofType"
+                        value={formData.roofType}
+                        onChange={(e) => setFormData({ ...formData, roofType: e.target.value as RooftopType })}
+                        className="w-full bg-[#fafbfa] border border-slate-200 hover:border-slate-300 focus:border-primary focus:bg-white text-slate-800 text-xs rounded-xl px-4 py-3 focus:outline-none transition-all duration-200 cursor-pointer"
+                      >
+                        <option value="tin">Tin Sheet Roof (Sloped)</option>
+                        <option value="concrete">Concrete Flat Roof</option>
+                        <option value="wooden">Wooden Roof (Sloped)</option>
+                      </select>
                     </div>
-                  </motion.form>
-                ) : (
-                  <motion.div
-                    key="success-card"
-                    initial={{ scale: 0.95, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ type: 'spring', duration: 0.5 }}
-                    className="text-center py-8 px-4 flex flex-col items-center"
-                    id="modal-success-screen"
+                  </div>
+
+                  <div className="space-y-1">
+                    <label htmlFor="message" className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Message / Property Details</label>
+                    <textarea
+                      id="message"
+                      rows={4}
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      placeholder="Tell us about your property roof size or specific energy requirements..."
+                      className="w-full bg-[#fafbfa] border border-slate-200 hover:border-slate-300 focus:border-primary focus:bg-white text-slate-800 placeholder-slate-400 text-xs rounded-xl px-4 py-3 focus:outline-none transition-all duration-200 resize-none"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-primary hover:bg-primary/95 text-white font-bold text-xs py-3.5 rounded-xl transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer disabled:opacity-75"
                   >
-                    <div className="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 mb-4 ring-8 ring-emerald-50/50">
-                      <CheckCircle2 className="w-10 h-10" />
-                    </div>
-                    <h4 className="text-xl font-bold text-slate-900">Feasibility Request Registered!</h4>
-                    <p className="text-sm text-slate-600 mt-2 max-w-sm">
-                      Congratulations, <span className="font-semibold text-slate-800">{formData.name}</span>! Your application for a <span className="font-semibold text-primary">{initialData.systemSize} kW solar system</span> has been queued.
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        <span>Submitting Lead...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Submit Quote Request</span>
+                        <Send className="w-3.5 h-3.5 text-secondary" />
+                      </>
+                    )}
+                  </button>
+                </motion.form>
+              ) : (
+                <motion.div
+                  key="success-card"
+                  initial={{ scale: 0.95, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                  className="text-center py-8 space-y-5"
+                >
+                  <div className="w-14 h-14 bg-emerald-50 rounded-full flex items-center justify-center mx-auto text-accent border border-emerald-100">
+                    <CheckCircle className="w-7 h-7" />
+                  </div>
+
+                  <div className="space-y-2">
+                    <h3 className="text-xl font-extrabold text-primary">Inquiry Sent Successfully!</h3>
+                    <p className="text-slate-500 text-xs max-w-sm mx-auto leading-relaxed">
+                      Thank you, {formData.name}. Gulzar Ahmad Ganaie&apos;s MNRE certified engineering team will contact you within 24 hours to schedule your free site assessment.
                     </p>
+                  </div>
 
-                    <div className="my-6 bg-emerald-50/50 border border-emerald-100 rounded-xl p-4 text-left text-xs max-w-sm w-full space-y-2">
-                      <div className="flex justify-between font-semibold text-slate-700">
-                        <span>Application ID:</span>
-                        <span className="text-primary select-all">PPS-{Math.floor(200000 + Math.random() * 800000)}</span>
-                      </div>
-                      <div className="flex justify-between text-slate-500">
-                        <span>District Grid:</span>
-                        <span>{initialData.district}</span>
-                      </div>
-                      <div className="flex justify-between text-slate-500">
-                        <span>Designated Subsidizer:</span>
-                        <span>PM Surya Ghar Board J&K</span>
-                      </div>
-                      <div className="flex justify-between text-slate-800 font-medium border-t border-emerald-100 pt-2">
-                        <span>Est. Subsidy Pre-Approved:</span>
-                        <span className="text-secondary">₹{initialData.subsidy.toLocaleString('en-IN')}</span>
-                      </div>
+                  <div className="bg-primary/5 p-4 rounded-2xl max-w-sm mx-auto border border-primary/10 space-y-3">
+                    <p className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Calculated Central Subsidy</p>
+                    
+                    <div className="flex justify-between items-center px-2">
+                      <span className="text-xs text-slate-500">Estimated Target Size</span>
+                      <span className="text-xs font-bold text-primary">{results.estimatedSize} kWp</span>
                     </div>
+                    
+                    <div className="flex justify-between items-center px-2">
+                      <span className="text-xs text-slate-500">Pre-Approved Grant</span>
+                      <span className="text-xs font-bold text-accent">
+                        ₹{results.subsidy.toLocaleString('en-IN')}
+                      </span>
+                    </div>
+                  </div>
 
-                    <p className="text-xs text-slate-400 mt-1 mb-6">
-                      A local Kashmir grid certified engineer will call you shortly at <span className="font-semibold text-slate-600">{formData.phone}</span> to confirm the free rooftop inspection on <span className="font-semibold">{formData.preferredDate}</span>.
-                    </p>
-
-                    <button
-                      onClick={() => {
-                        setIsSuccess(false);
-                        setFormData({
-                          name: '',
-                          phone: '',
-                          email: '',
-                          address: '',
-                          agreedToTerms: true,
-                          preferredDate: new Date(Date.now() + 86400000 * 2).toISOString().split('T')[0]
-                        });
-                        onClose();
-                      }}
-                      className="px-6 py-2.5 bg-primary text-white rounded-xl text-sm font-semibold hover:bg-primary/90 transition-colors"
-                    >
-                      Done / Back to Calculator
-                    </button>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+                  <button
+                    onClick={() => {
+                      setIsSuccess(false);
+                      onClose();
+                    }}
+                    className="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition-colors cursor-pointer inline-flex items-center gap-1.5"
+                  >
+                    <span>Done / Back to Home</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
         </div>
       )}
