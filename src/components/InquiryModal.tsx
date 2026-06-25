@@ -105,10 +105,10 @@ export default function InquiryModal({ isOpen, onClose, initialData }: InquiryMo
               </button>
               <div className="flex items-center gap-2 mb-1">
                 <Sun className="w-5 h-5 text-secondary-container fill-secondary-container animate-pulse" />
-                <span className="text-xs uppercase tracking-wider font-semibold text-secondary-container">UT Kashmir Subsidy Processing</span>
+                <span className="text-xs uppercase tracking-wider font-semibold text-secondary-container">Government Subsidy Application</span>
               </div>
-              <h3 className="text-xl font-bold tracking-tight">Lock in Your ₹78,000 Subsidy</h3>
-              <p className="text-sm text-white/80 mt-1">Submit your details to secure priority site mapping and technical feasibility assessment.</p>
+              <h3 className="text-xl font-bold tracking-tight">Get Your Government Subsidy</h3>
+              <p className="text-sm text-white/80 mt-1">Submit your details to schedule a free home mapping visit and get an exact quote.</p>
             </div>
 
             <div className="p-6 flex-grow">
@@ -241,7 +241,7 @@ export default function InquiryModal({ isOpen, onClose, initialData }: InquiryMo
                       </label>
                     </div>
 
-                    {/* Submit Button */}
+                     {/* Submit Button */}
                     <button
                       type="submit"
                       disabled={isSubmitting || !formData.agreedToTerms}
@@ -251,11 +251,11 @@ export default function InquiryModal({ isOpen, onClose, initialData }: InquiryMo
                       {isSubmitting ? (
                         <>
                           <Loader2 className="w-5 h-5 animate-spin" />
-                          <span>Verifying Subsidy Eligibility...</span>
+                          <span>Submitting...</span>
                         </>
                       ) : (
                         <>
-                          <span>Submit Subsidy Application</span>
+                          <span>Book Free Consultation</span>
                           <ArrowRight className="w-4 h-4" />
                         </>
                       )}
@@ -263,7 +263,7 @@ export default function InquiryModal({ isOpen, onClose, initialData }: InquiryMo
 
                     <div className="flex items-center gap-1.5 justify-center text-xs text-slate-400 pt-1">
                       <ShieldAlert className="w-3.5 h-3.5 text-emerald-600" />
-                      <span>Encrypted SSL Secure connection. Government approved partner.</span>
+                      <span>Your details are safe with us. We are a Government approved partner.</span>
                     </div>
                   </motion.form>
                 ) : (

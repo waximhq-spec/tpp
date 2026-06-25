@@ -43,13 +43,13 @@ export default function LatestProjects() {
           <div className="max-w-2xl text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/10 mb-4 backdrop-blur-md">
               <Instagram className="w-3.5 h-3.5 text-pink-500 animate-pulse" />
-              <span className="text-[10px] md:text-xs font-bold text-slate-300 uppercase tracking-widest">Instagram Feed</span>
+              <span className="text-[10px] md:text-xs font-bold text-slate-300 uppercase tracking-widest">Recent Videos</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight leading-none">
               Completed Installations
             </h2>
             <p className="text-slate-400 text-sm md:text-base mt-4 leading-relaxed">
-              Explore our live installations and customer video testimonials embedded directly from our feed.
+              Watch real videos of our solar systems installed in Kashmiri homes and businesses.
             </p>
           </div>
           

@@ -30,7 +30,7 @@ export default function Hero({ onGoToCalculator }: HeroProps) {
           {/* Live Subsidy Tag */}
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/5 rounded-full border border-primary/10 max-w-fit">
             <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-            <span className="text-[10px] md:text-xs font-semibold text-primary uppercase tracking-wider">Live Subsidy: Up to 78% Approved</span>
+            <span className="text-[10px] md:text-xs font-semibold text-primary uppercase tracking-wider">Govt Subsidy: Save Up to 78%</span>
           </div>
 
           {/* Headline */}
@@ -39,7 +39,7 @@ export default function Hero({ onGoToCalculator }: HeroProps) {
               Cut Your Electricity Bills by <span className="text-secondary">Up to 90%</span>
             </h1>
             <p className="text-slate-500 text-sm md:text-base leading-relaxed max-w-xl">
-              Government-subsidized solar systems built for Kashmir&apos;s unique climate. Engineered to resist heavy winter snowfall while yielding maximum output.
+              Get a government-subsidized solar system built for Kashmir&apos;s winter. Made to shed heavy snow easily and keep your electricity bills low year-round.
             </p>
           </div>
 
@@ -48,17 +48,17 @@ export default function Hero({ onGoToCalculator }: HeroProps) {
             <a
               href="tel:+917889880188"
               id="hero-check-savings-btn"
-              className="bg-primary hover:bg-primary/90 text-white font-semibold text-sm px-7 py-3.5 rounded-xl transition-all duration-200 shadow-[0_4px_20px_rgba(1,50,32,0.15)] hover:shadow-[0_6px_25px_rgba(1,50,32,0.25)] flex items-center justify-center gap-2 group cursor-pointer text-center"
+              className="bg-primary hover:bg-primary/90 text-white font-semibold text-sm px-7 py-3.5 rounded-xl transition-all duration-200 shadow-[0_4px_20px_rgba(1,50_32,0.15)] hover:shadow-[0_6px_25px_rgba(1,50_32,0.25)] flex items-center justify-center gap-2 group cursor-pointer text-center"
             >
               <span>Free Consultation Call</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </a>
 
             <button
-              onClick={() => scrollToSection('customer-videos')}
+              onClick={() => scrollToSection('installations')}
               className="bg-slate-50 hover:bg-slate-100 text-slate-700 font-medium text-sm px-6 py-3.5 rounded-xl transition-all duration-200 border border-slate-200 hover:border-slate-300 flex items-center justify-center gap-2 cursor-pointer"
             >
-              <span>Watch Customer Reels</span>
+              <span>Watch Installations</span>
             </button>
           </div>
 
@@ -70,7 +70,7 @@ export default function Hero({ onGoToCalculator }: HeroProps) {
               </div>
               <div>
                 <p className="text-lg font-extrabold text-primary leading-none">500+</p>
-                <p className="text-[10px] text-slate-400 font-medium">Installations</p>
+                <p className="text-[10px] text-slate-400 font-medium">Setups Done</p>
               </div>
             </div>
             <div className="w-px h-8 bg-slate-100 hidden sm:block" />
@@ -80,7 +80,7 @@ export default function Hero({ onGoToCalculator }: HeroProps) {
               </div>
               <div>
                 <p className="text-lg font-extrabold text-primary leading-none">1,000+</p>
-                <p className="text-[10px] text-slate-400 font-medium">Families Powered</p>
+                <p className="text-[10px] text-slate-400 font-medium">Happy Families</p>
               </div>
             </div>
             <div className="w-px h-8 bg-slate-100 hidden sm:block" />

@@ -18,7 +18,7 @@ export default function Footer() {
               THE POWER PLANET
             </span>
             <p className="text-white/50 text-xs max-w-sm leading-relaxed">
-              Kashmir's premier MNRE-approved solar integrator. Engineering high-yield monocrystalline grids optimized for sub-zero winters and heavy snow loads.
+              Kashmir&apos;s trusted solar partner. Installing durable, snow-resistant solar systems optimized for cold winter climates.
             </p>
           </div>
 

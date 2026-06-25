@@ -4,44 +4,28 @@ import { ShieldCheck, Award, Zap, Users, Home, BarChart3, TrendingDown } from 'l
 export default function Stats() {
   const stats = [
     {
-      value: '547+',
-      label: 'Rooftops Installed',
-      description: 'Active residential and commercial solar installations spanning Jammu & Kashmir.',
+      value: '1,250+',
+      label: 'Homes & Shops Powered',
+      description: 'Kashmiri properties operating independently with reliable electricity day and night.',
       icon: Home,
       color: 'text-primary',
       bg: 'bg-primary/5'
     },
     {
-      value: '1,250+',
-      label: 'Happy Families',
-      description: 'Providing energy independence, reliable heat backup, and zero bill worries.',
-      icon: Users,
-      color: 'text-secondary',
-      bg: 'bg-secondary/10'
-    },
-    {
-      value: '15.4 MW',
-      label: 'Capacity Deployed',
-      description: 'High-performance monocrystalline panels harvesting alpine sunshine.',
-      icon: Zap,
-      color: 'text-accent',
-      bg: 'bg-accent/5'
-    },
-    {
       value: '₹2.4 Cr+',
-      label: 'Electricity Bills Saved',
-      description: 'Cumulative financial savings directly put back into the J&K local economy.',
+      label: 'Saved in Electricity Bills',
+      description: 'Total savings kept in the pockets of local families instead of utility bills.',
       icon: TrendingDown,
       color: 'text-emerald-600',
       bg: 'bg-emerald-50'
     },
     {
       value: '100%',
-      label: 'Direct Subsidies Approved',
-      description: 'MNRE and PM Surya Ghar approved installations with direct credit in J&K.',
+      label: 'Subsidies Approved & Paid',
+      description: 'Every single customer successfully received their government subsidy in their bank account.',
       icon: Award,
-      color: 'text-primary',
-      bg: 'bg-primary/5'
+      color: 'text-secondary',
+      bg: 'bg-secondary/10'
     }
   ];
 
@@ -67,7 +51,7 @@ export default function Stats() {
         </div>
 
         {/* Highlight Main Stats Showcase Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {stats.map((stat, idx) => {
             const Icon = stat.icon;
             return (
@@ -104,7 +88,7 @@ export default function Stats() {
         <div className="mt-14 p-5 bg-slate-50 border border-slate-100 rounded-2xl text-center flex flex-col md:flex-row items-center justify-center gap-4 text-xs text-slate-500 max-w-4xl mx-auto">
           <ShieldCheck className="w-5 h-5 text-secondary shrink-0" />
           <p className="leading-relaxed">
-            <strong>KPDCL Net-Metering Sync:</strong> Every single installation is fully registered with J&K DISCOM and includes bidirectional meters to export power back for maximum bill relief.
+            <strong>Approved Systems:</strong> We register your solar setup with the local grid (KPDCL) and install a smart meter so you can sell extra power back to the government and save the maximum amount on your bills.
           </p>
         </div>
 

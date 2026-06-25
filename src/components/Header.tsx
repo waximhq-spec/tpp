@@ -26,7 +26,6 @@ export default function Header({ currentTab, onTabChange, onOpenQuote }: HeaderP
 
   const navItems = [
     { id: 'home' as const, label: 'Home', path: '/' },
-    { id: 'installations' as const, label: 'Installations', path: '/installations' },
     { id: 'contact' as const, label: 'Contact Us', path: '/contact' },
   ];
 
@@ -78,27 +77,22 @@ export default function Header({ currentTab, onTabChange, onOpenQuote }: HeaderP
 
         {/* Desktop Nav Links */}
         <nav className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => {
-            const isActive = currentTab === item.id;
-            return (
-              <button
-                key={item.id}
-                onClick={() => handleNavClick(item)}
-                className={`relative py-1 font-medium text-[13px] tracking-wide transition-colors duration-200 cursor-pointer ${
-                  isActive ? 'text-primary font-bold' : 'text-slate-500 hover:text-primary'
-                }`}
-              >
-                {item.label}
-                {isActive && (
-                  <motion.div
-                    layoutId="activeTabIndicator"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-secondary"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  />
-                )}
-              </button>
-            );
-          })}
+          <button
+            onClick={() => handleNavClick({ id: 'home', label: 'Home', path: '/' })}
+            className={`relative py-1 font-medium text-[13px] tracking-wide transition-colors duration-200 cursor-pointer ${
+              currentTab === 'home' ? 'text-primary font-bold' : 'text-slate-500 hover:text-primary'
+            }`}
+          >
+            Home
+            {currentTab === 'home' && (
+              <motion.div
+                layoutId="activeTabIndicator"
+                className="absolute -bottom-1 left-0 right-0 h-0.5 bg-secondary"
+                transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+              />
+            )}
+          </button>
+          
           <a
             href="#installations"
             onClick={(e) => handleSectionClick(e, 'installations')}
@@ -106,6 +100,22 @@ export default function Header({ currentTab, onTabChange, onOpenQuote }: HeaderP
           >
             Installations
           </a>
+
+          <button
+            onClick={() => handleNavClick({ id: 'contact', label: 'Contact Us', path: '/contact' })}
+            className={`relative py-1 font-medium text-[13px] tracking-wide transition-colors duration-200 cursor-pointer ${
+              currentTab === 'contact' ? 'text-primary font-bold' : 'text-slate-500 hover:text-primary'
+            }`}
+          >
+            Contact Us
+            {currentTab === 'contact' && (
+              <motion.div
+                layoutId="activeTabIndicator"
+                className="absolute -bottom-1 left-0 right-0 h-0.5 bg-secondary"
+                transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+              />
+            )}
+          </button>
         </nav>
 
         {/* Desktop CTA Button */}
@@ -156,17 +166,15 @@ export default function Header({ currentTab, onTabChange, onOpenQuote }: HeaderP
             className="md:hidden border-t border-slate-100 bg-white overflow-hidden shadow-inner absolute top-full left-0 right-0 z-50 px-5 py-5"
           >
             <div className="flex flex-col gap-4">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => handleNavClick(item)}
-                  className={`text-left font-bold text-sm py-2 border-b border-slate-50 transition-colors ${
-                    currentTab === item.id ? 'text-primary pl-2' : 'text-slate-600'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
+              <button
+                onClick={() => handleNavClick({ id: 'home', label: 'Home', path: '/' })}
+                className={`text-left font-bold text-sm py-2 border-b border-slate-50 transition-colors ${
+                  currentTab === 'home' ? 'text-primary pl-2' : 'text-slate-600'
+                }`}
+              >
+                Home
+              </button>
+
               <a
                 href="#installations"
                 onClick={(e) => handleSectionClick(e, 'installations')}
@@ -174,6 +182,15 @@ export default function Header({ currentTab, onTabChange, onOpenQuote }: HeaderP
               >
                 Installations
               </a>
+
+              <button
+                onClick={() => handleNavClick({ id: 'contact', label: 'Contact Us', path: '/contact' })}
+                className={`text-left font-bold text-sm py-2 border-b border-slate-50 transition-colors ${
+                  currentTab === 'contact' ? 'text-primary pl-2' : 'text-slate-600'
+                }`}
+              >
+                Contact Us
+              </button>
               <a
                 href="tel:+917889880188"
                 onClick={() => setMobileMenuOpen(false)}

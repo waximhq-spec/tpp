@@ -156,19 +156,19 @@ export default function ContactPage() {
                   <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-100/50">
                     <div className="flex items-center gap-2 text-slate-400 mb-1">
                       <Zap className="w-4 h-4 text-secondary" />
-                      <span className="text-[9px] font-bold uppercase text-slate-500">Total Capacity</span>
+                      <span className="text-[9px] font-bold uppercase text-slate-500">Power Output</span>
                     </div>
-                    <p className="text-xl font-extrabold text-primary tracking-tight leading-none">1,013 kWp</p>
-                    <p className="text-[9px] text-slate-400 mt-1">Installed Deployed</p>
+                    <p className="text-xl font-extrabold text-primary tracking-tight leading-none">1,000 kW+</p>
+                    <p className="text-[9px] text-slate-400 mt-1">Clean energy active</p>
                   </div>
 
                   <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-100/50">
                     <div className="flex items-center gap-2 text-slate-400 mb-1">
                       <Users className="w-4 h-4 text-primary" />
-                      <span className="text-[9px] font-bold uppercase text-slate-500">Completed</span>
+                      <span className="text-[9px] font-bold uppercase text-slate-500">Total Projects</span>
                     </div>
-                    <p className="text-xl font-extrabold text-primary tracking-tight leading-none">245</p>
-                    <p className="text-[9px] text-slate-400 mt-1">Solar Rooftops</p>
+                    <p className="text-xl font-extrabold text-primary tracking-tight leading-none">240+</p>
+                    <p className="text-[9px] text-slate-400 mt-1">Completed setups in J&K</p>
                   </div>
                 </div>
               </div>

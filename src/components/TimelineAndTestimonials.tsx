@@ -26,27 +26,27 @@ export default function TimelineAndTestimonials() {
   const timelineSteps = [
     {
       phase: "01",
-      title: "Rooftop Drone Survey",
+      title: "Rooftop Mapping",
       days: "Days 1–2",
-      description: "We deploy drone photography to build a 3D shadow map, calculating optimal module layout for winter sunshine."
+      description: "We inspect your roof and map it to find where your solar panels will get the absolute most sunlight."
     },
     {
       phase: "02",
-      title: "Government Portal Filing",
+      title: "Paperwork & Subsidy",
       days: "Days 3–10",
-      description: "Our legal desk registers your installation on the PM Surya Ghar national system and handles KPDCL DISCOM approvals."
+      description: "We submit all documents to the government portal and handle your subsidy and utility approvals."
     },
     {
       phase: "03",
-      title: "Weather-proof Assembly",
+      title: "Panel Installation",
       days: "Days 11–14",
-      description: "Certified engineers install monocrystalline panels on structural-grade aluminum mounts with premium insulated cabling."
+      description: "Our certified team installs durable, snow-resistant solar panels securely on your roof."
     },
     {
       phase: "04",
-      title: "Net-Metering Sync",
+      title: "Smart Meter Setup",
       days: "Days 15–20",
-      description: "We fit the official bidirectional net-meter, enabling you to export excess solar power back to the grid."
+      description: "We connect a smart bidirectional meter so you can sell extra power back to the grid for maximum savings."
     }
   ];
 
