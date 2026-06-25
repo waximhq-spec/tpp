@@ -73,6 +73,20 @@ export default function ContactPage() {
       
       setIsSubmitting(false);
       setIsSuccess(true);
+
+      // Construct and open WhatsApp pre-filled message
+      const text = `Hi, I have filled out the solar inquiry form on the website with the following details:
+- *Name:* ${formData.name}
+- *Phone:* ${formData.phone}
+- *Email:* ${formData.email}
+- *Monthly Bill:* ₹${formData.bill.toLocaleString('en-IN')}
+- *Roof Type:* ${formData.roofType.toUpperCase()}
+- *Estimated System Size:* ${systemSize} kW
+- *Estimated Subsidy:* ₹${subsidy.toLocaleString('en-IN')}
+- *Message:* ${formData.message || 'None'}`;
+      
+      const whatsappUrl = `https://wa.me/917889880188?text=${encodeURIComponent(text)}`;
+      window.open(whatsappUrl, '_blank');
     }, 1200);
   };
 

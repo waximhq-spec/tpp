@@ -70,6 +70,20 @@ export default function InquiryModal({ isOpen, onClose, initialData }: InquiryMo
 
       // Trigger standard event to refresh log lists
       window.dispatchEvent(new Event('new_lead_submitted'));
+
+      // Construct and open WhatsApp pre-filled message
+      const text = `Hi, I have submitted my solar subsidy inquiry on the website with the following details:
+- *Name:* ${formData.name}
+- *Phone:* ${formData.phone}
+- *Email:* ${formData.email}
+- *Address:* ${formData.address || 'Not specified'}
+- *Preferred Visit Date:* ${formData.preferredDate}
+- *Estimated System Size:* ${initialData.systemSize} kW
+- *Estimated Subsidy:* ₹${initialData.subsidy.toLocaleString('en-IN')}
+- *Estimated Post-Solar Bill:* ₹${initialData.newBill}/month`;
+
+      const whatsappUrl = `https://wa.me/917889880188?text=${encodeURIComponent(text)}`;
+      window.open(whatsappUrl, '_blank');
     }, 1500);
   };
 
