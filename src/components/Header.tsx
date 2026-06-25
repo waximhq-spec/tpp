@@ -64,7 +64,7 @@ export default function Header({ currentTab, onTabChange, onOpenQuote }: HeaderP
         ? 'bg-white/75 backdrop-blur-md border-b border-slate-100/80 shadow-[0_2px_20px_rgba(1,50,32,0.02)]' 
         : 'bg-white border-b border-slate-50'
     }`}>
-      <div className="max-w-7xl mx-auto px-4 md:px-10 py-2.5 md:py-3.5 flex justify-between items-center transition-all duration-300">
+      <div className="w-full px-4 md:px-10 py-2.5 md:py-3.5 flex justify-between items-center transition-all duration-300">
         <div 
           onClick={() => handleNavClick({ id: 'home', label: 'Home', path: '/' })} 
           className="flex items-center cursor-pointer group animate-fade-in"
@@ -100,6 +100,22 @@ export default function Header({ currentTab, onTabChange, onOpenQuote }: HeaderP
           >
             Testimonials
           </a>
+
+          <button
+            onClick={() => handleNavClick({ id: 'installations', label: 'Installations', path: '/installations' })}
+            className={`relative py-1 font-medium text-[13px] tracking-wide transition-colors duration-200 cursor-pointer ${
+              currentTab === 'installations' ? 'text-primary font-bold' : 'text-slate-500 hover:text-primary'
+            }`}
+          >
+            Installations
+            {currentTab === 'installations' && (
+              <motion.div
+                layoutId="activeTabIndicator"
+                className="absolute -bottom-1 left-0 right-0 h-0.5 bg-secondary"
+                transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+              />
+            )}
+          </button>
 
           <button
             onClick={() => handleNavClick({ id: 'contact', label: 'Contact Us', path: '/contact' })}
@@ -184,22 +200,21 @@ export default function Header({ currentTab, onTabChange, onOpenQuote }: HeaderP
               </a>
 
               <button
+                onClick={() => handleNavClick({ id: 'installations', label: 'Installations', path: '/installations' })}
+                className={`text-left font-bold text-sm py-2 border-b border-slate-50 transition-colors ${
+                  currentTab === 'installations' ? 'text-primary pl-2' : 'text-slate-600'
+                }`}
+              >
+                Installations
+              </button>
+
+              <button
                 onClick={() => handleNavClick({ id: 'contact', label: 'Contact Us', path: '/contact' })}
                 className={`text-left font-bold text-sm py-2 border-b border-slate-50 transition-colors ${
                   currentTab === 'contact' ? 'text-primary pl-2' : 'text-slate-600'
                 }`}
               >
                 Contact Us
-              </button>
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenQuote();
-                }}
-                id="get-quote-mobile-btn"
-                className="w-full bg-primary text-white font-bold py-3 text-center rounded-xl transition-colors mt-2 block cursor-pointer"
-              >
-                Get a Quote
               </button>
             </div>
           </motion.div>

@@ -44,7 +44,7 @@ export default function BrandCollab() {
         </p>
         
         {/* Horizontal Infinite/Flex Scroll */}
-        <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12 lg:gap-16">
+        <div className="flex flex-wrap items-center justify-center gap-8 md:gap-14 lg:gap-18">
           {brands.map((brand, idx) => (
             <motion.div
               key={idx}
@@ -52,12 +52,12 @@ export default function BrandCollab() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.05 }}
-              className="h-10 md:h-12 flex items-center justify-center filter grayscale opacity-55 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer"
+              className="h-14 md:h-18 flex items-center justify-center filter grayscale opacity-55 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer"
             >
               <img
                 src={brand.url}
                 alt={brand.name}
-                className="h-full w-auto object-contain max-w-[120px] md:max-w-[150px] mix-blend-multiply"
+                className="h-full w-auto object-contain max-w-[140px] md:max-w-[180px] mix-blend-multiply"
               />
             </motion.div>
           ))}
