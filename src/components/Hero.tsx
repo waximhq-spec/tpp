@@ -128,7 +128,7 @@ export default function Hero({ onGetQuote }: HeroProps) {
             <div className="bg-slate-50/50 hover:bg-slate-50 p-5 rounded-2xl border border-slate-100 hover:border-slate-200 transition-all duration-300 group hover:-translate-y-0.5 shadow-[0_2px_15px_rgba(0,0,0,0.01)]">
               <div className="flex items-center gap-2 mb-2">
                 <Zap className="w-5 h-5 text-secondary fill-secondary/20 shrink-0" />
-                <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-slate-500">Power Output</span>
+                <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-slate-500">Total Installed Capacity</span>
               </div>
               <p className="text-2xl md:text-3xl font-black text-primary tracking-tight leading-none">
                 <AnimatedNumber value={1000} suffix=" kW+" />
@@ -139,7 +139,7 @@ export default function Hero({ onGetQuote }: HeroProps) {
             <div className="bg-slate-50/50 hover:bg-slate-50 p-5 rounded-2xl border border-slate-100 hover:border-slate-200 transition-all duration-300 group hover:-translate-y-0.5 shadow-[0_2px_15px_rgba(0,0,0,0.01)]">
               <div className="flex items-center gap-2 mb-2">
                 <Users className="w-5 h-5 text-primary fill-primary/10 shrink-0" />
-                <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-slate-500">Total Projects</span>
+                <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-slate-500">No. of Installations</span>
               </div>
               <p className="text-2xl md:text-3xl font-black text-primary tracking-tight leading-none">
                 <AnimatedNumber value={240} suffix="+" />
