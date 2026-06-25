@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Premium Tesla/Stripe Inspired Design System */
+  --color-primary: #013220;              /* Deep Forest Green */
+  --color-primary-container: #084c35;    /* Rich Accent Olive */
+  --color-on-primary-container: #b3dfcd;  /* Light Mint Highlight */
+  --color-primary-fixed: #c6ebd9;        /* Soft Sage Green */
+  --color-primary-fixed-dim: #98dbbd;    /* Medium Sage Tint */
+  --color-on-primary-fixed-variant: #0e5e3f; /* Deep Sage Border/Text */
+
+  --color-secondary: #F5A623;            /* Warm Solar Gold */
+  --color-secondary-container: #fef0db;  /* Soft Amber Glow bg */
+  --color-on-secondary-container: #935600; /* Deep Amber Text */
+  --color-secondary-fixed-dim: #ffd080;
+  --color-secondary-fixed: #ffedd5;
+
+  --color-accent: #4CAF50;               /* Soft Green Accent */
+  
+  --color-background: #fafbfa;           /* Pure Clean Organic White */
+  --color-on-background: #0f1512;        /* Dark Slate with forest undertone */
+
+  --color-surface: #ffffff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f4f6f4;
+  --color-surface-container: #edf0ed;
+  --color-surface-container-high: #e3e7e3;
+  --color-surface-container-highest: #d7ddd7;
+
+  --color-on-surface: #0f1512;
+  --color-on-surface-variant: #3b4540;
+  --color-outline: #6e7973;
+  --color-outline-variant: #bec9c3;
+
+  /* Layout Spacing Constants */
+  --spacing-margin-mobile: 20px;
+  --spacing-margin-desktop: 120px;
+  --spacing-gutter: 32px;
+}
+
+/* Base style resets */
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Animations configurations */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 15s linear infinite;
+}
+
+/* Custom scrollbar adjustments */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bfc9c3;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #707974;
+}
+
+/* Range slider styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #013220;
+  cursor: pointer;
+  border: 3px solid white;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.15);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #013220;
+  cursor: pointer;
+  border: 3px solid white;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.15);
+}

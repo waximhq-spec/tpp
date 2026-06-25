@@ -1,0 +1,6 @@
+{
+  "name": "The Power Planet",
+  "description": "Solar energy landing page and interactive subsidy calculator for residential and commercial rooftops in Kashmir.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
