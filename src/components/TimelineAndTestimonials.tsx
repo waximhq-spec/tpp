@@ -23,32 +23,7 @@ export default function TimelineAndTestimonials() {
     }
   ];
 
-  const timelineSteps = [
-    {
-      phase: "01",
-      title: "Rooftop Mapping",
-      days: "Days 1–2",
-      description: "We inspect your roof and map it to find where your solar panels will get the absolute most sunlight."
-    },
-    {
-      phase: "02",
-      title: "Paperwork & Subsidy",
-      days: "Days 3–10",
-      description: "We submit all documents to the government portal and handle your subsidy and utility approvals."
-    },
-    {
-      phase: "03",
-      title: "Panel Installation",
-      days: "Days 11–14",
-      description: "Our certified team installs durable, snow-resistant solar panels securely on your roof."
-    },
-    {
-      phase: "04",
-      title: "Smart Meter Setup",
-      days: "Days 15–20",
-      description: "We connect a smart bidirectional meter so you can sell extra power back to the grid for maximum savings."
-    }
-  ];
+
 
   return (
     <section className="py-16 md:py-24 bg-slate-50/50 border-t border-slate-100 relative overflow-hidden">
@@ -105,49 +80,6 @@ export default function TimelineAndTestimonials() {
                     <p className="text-[10px] text-slate-400">{test.role}</p>
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Timeline */}
-        <div>
-          <div className="text-center max-w-xl mx-auto mb-10">
-            <p className="text-[10px] uppercase font-bold tracking-widest text-accent mb-2">The Roadmap</p>
-            <h2 className="text-2xl md:text-4xl text-primary font-extrabold tracking-tight leading-tight">
-              20 Days to Energy Autonomy
-            </h2>
-            <p className="text-slate-500 text-sm mt-3">
-              We handle engineering, permits, and government subsidy applications end-to-end.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-            {timelineSteps.map((step, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.4, delay: idx * 0.1 }}
-                className="bg-white border border-slate-100 p-5 rounded-2xl relative overflow-hidden group hover:shadow-[0_6px_24px_rgba(1,50,32,0.03)] transition-all duration-300"
-              >
-                <div className="flex justify-between items-center mb-3">
-                  <span className="text-[10px] font-bold text-accent bg-accent/10 px-2 py-0.5 rounded-md tracking-wider">
-                    Phase {step.phase}
-                  </span>
-                  <span className="text-[10px] font-semibold text-slate-400">
-                    {step.days}
-                  </span>
-                </div>
-
-                <h3 className="text-sm font-bold text-primary mb-1.5">
-                  {step.title}
-                </h3>
-                
-                <p className="text-slate-500 text-xs leading-relaxed">
-                  {step.description}
-                </p>
               </motion.div>
             ))}
           </div>
