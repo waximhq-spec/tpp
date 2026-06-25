@@ -85,7 +85,7 @@ export default function ContactPage() {
 - *Estimated Subsidy:* ₹${subsidy.toLocaleString('en-IN')}
 - *Message:* ${formData.message || 'None'}`;
       
-      const whatsappUrl = `https://wa.me/917889880188?text=${encodeURIComponent(text)}`;
+      const whatsappUrl = `https://wa.me/919541831565?text=${encodeURIComponent(text)}`;
       window.open(whatsappUrl, '_blank');
     }, 1200);
   };
@@ -194,7 +194,7 @@ export default function ContactPage() {
               
               <div className="space-y-4">
                 <a 
-                  href="tel:+917889880188" 
+                  href="tel:+919541831565" 
                   className="flex items-start gap-3.5 p-3 rounded-xl border border-slate-100 hover:border-primary/20 hover:bg-slate-50/50 transition-all group"
                 >
                   <div className="w-9 h-9 rounded-lg bg-primary/5 flex items-center justify-center text-primary group-hover:text-white group-hover:bg-primary transition-all shrink-0">
@@ -202,7 +202,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-[9px] uppercase font-bold text-slate-400">Contact Number</p>
-                    <p className="text-sm font-bold text-primary mt-0.5">+91 78898 80188</p>
+                    <p className="text-sm font-bold text-primary mt-0.5">+91 95418 31565</p>
                     <p className="text-[10px] text-slate-400">Tap to call our office directly</p>
                   </div>
                 </a>

@@ -106,7 +106,7 @@ export default function Home() {
 
       {/* Floating Call Button */}
       <a
-        href="tel:+917889880188"
+        href="tel:+919541831565"
         className="fixed bottom-22 right-4 md:right-6 z-40 bg-primary hover:bg-primary/90 text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center cursor-pointer border border-white/10"
         aria-label="Call us directly"
       >
@@ -117,7 +117,7 @@ export default function Home() {
 
       {/* Floating WhatsApp Button */}
       <a
-        href="https://wa.me/917889880188?text=Hi,%20I'm%20interested%20in%20solar%20rooftop%20installations%20for%20my%20property%20in%20Kashmir."
+        href="https://wa.me/919541831565?text=Hi,%20I'm%20interested%20in%20solar%20rooftop%20installations%20for%20my%20property%20in%20Kashmir."
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-4 md:right-6 z-40 bg-[#25D366] hover:bg-[#20ba5a] text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center cursor-pointer"

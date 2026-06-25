@@ -329,7 +329,7 @@ export default function CustomerVideos() {
                   </div>
                   
                   <a 
-                    href="https://wa.me/917889880188?text=Hi,%20I%20saw%20your%20customer%20reel%20from%20Nishat/Pahalgam.%20I%20want%20to%20know%20more%20about%20your%20solar%20installations." 
+                    href="https://wa.me/919541831565?text=Hi,%20I%20saw%20your%20customer%20reel%20from%20Nishat/Pahalgam.%20I%20want%20to%20know%20more%20about%20your%20solar%20installations." 
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-[#25D366] hover:bg-[#20ba5a] text-white text-[10px] font-bold px-3 py-1.5 rounded-lg flex items-center gap-1 cursor-pointer transition-colors"

@@ -46,7 +46,7 @@ export default function Hero({ onGoToCalculator }: HeroProps) {
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
             <a
-              href="tel:+917889880188"
+              href="tel:+919541831565"
               id="hero-check-savings-btn"
               className="bg-primary hover:bg-primary/90 text-white font-semibold text-sm px-7 py-3.5 rounded-xl transition-all duration-200 shadow-[0_4px_20px_rgba(1,50_32,0.15)] hover:shadow-[0_6px_25px_rgba(1,50_32,0.25)] flex items-center justify-center gap-2 group cursor-pointer text-center"
             >

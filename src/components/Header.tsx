@@ -120,7 +120,7 @@ export default function Header({ currentTab, onTabChange, onOpenQuote }: HeaderP
 
         {/* Desktop CTA Button */}
         <a
-          href="tel:+917889880188"
+          href="tel:+919541831565"
           id="get-quote-nav-btn"
           className="hidden md:flex bg-primary hover:bg-primary/90 text-white font-bold text-xs px-6 py-2.5 rounded-xl transition-all shadow-md hover:shadow-lg items-center gap-1.5 cursor-pointer hover:-translate-y-0.5 transform duration-200 text-center"
         >
@@ -132,7 +132,7 @@ export default function Header({ currentTab, onTabChange, onOpenQuote }: HeaderP
         <div className="flex md:hidden items-center gap-2">
           {/* WhatsApp Mobile Button */}
           <a
-            href="https://wa.me/917889880188?text=Hi,%20I'm%20interested%20in%20solar%20rooftop%20installations%20for%20my%20property%20in%20Kashmir."
+            href="https://wa.me/919541831565?text=Hi,%20I'm%20interested%20in%20solar%20rooftop%20installations%20for%20my%20property%20in%20Kashmir."
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 text-[#25D366] hover:bg-slate-100 rounded-lg transition-colors cursor-pointer flex items-center justify-center"
@@ -192,7 +192,7 @@ export default function Header({ currentTab, onTabChange, onOpenQuote }: HeaderP
                 Contact Us
               </button>
               <a
-                href="tel:+917889880188"
+                href="tel:+919541831565"
                 onClick={() => setMobileMenuOpen(false)}
                 id="get-quote-mobile-btn"
                 className="w-full bg-primary text-white font-bold py-3 text-center rounded-xl transition-colors mt-2 block"

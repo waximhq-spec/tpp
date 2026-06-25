@@ -82,7 +82,7 @@ export default function InquiryModal({ isOpen, onClose, initialData }: InquiryMo
 - *Estimated Subsidy:* ₹${initialData.subsidy.toLocaleString('en-IN')}
 - *Estimated Post-Solar Bill:* ₹${initialData.newBill}/month`;
 
-      const whatsappUrl = `https://wa.me/917889880188?text=${encodeURIComponent(text)}`;
+      const whatsappUrl = `https://wa.me/919541831565?text=${encodeURIComponent(text)}`;
       window.open(whatsappUrl, '_blank');
     }, 1500);
   };
