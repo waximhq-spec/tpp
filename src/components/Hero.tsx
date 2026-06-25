@@ -1,5 +1,66 @@
+"use client";
+
+import { useEffect, useState, useRef } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, ShieldCheck, Sun, Banknote, CloudSnow, Zap, Users } from 'lucide-react';
+
+function AnimatedNumber({
+  value,
+  duration = 1500,
+  suffix = '',
+  prefix = ''
+}: {
+  value: number;
+  duration?: number;
+  suffix?: string;
+  prefix?: string;
+}) {
+  const [count, setCount] = useState(0);
+  const elementRef = useRef<HTMLSpanElement>(null);
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true;
+          let startTimestamp: number | null = null;
+          const step = (timestamp: number) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            const easedProgress = progress * (2 - progress); // Ease out quad
+            
+            setCount(Math.floor(easedProgress * value));
+            
+            if (progress < 1) {
+              window.requestAnimationFrame(step);
+            }
+          };
+          window.requestAnimationFrame(step);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [value, duration]);
+
+  return (
+    <span ref={elementRef}>
+      {prefix}
+      {count.toLocaleString('en-IN')}
+      {suffix}
+    </span>
+  );
+}
+
 
 interface HeroProps {
   onGetQuote: () => void;
@@ -55,43 +116,35 @@ export default function Hero({ onGetQuote }: HeroProps) {
             </button>
 
             <button
-              onClick={() => scrollToSection('installations')}
+              onClick={() => scrollToSection('testimonials')}
               className="bg-slate-50 hover:bg-slate-100 text-slate-700 font-medium text-sm px-6 py-3.5 rounded-xl transition-all duration-200 border border-slate-200 hover:border-slate-300 flex items-center justify-center gap-2 cursor-pointer"
             >
-              <span>Watch Installations</span>
+              <span>Watch Testimonials</span>
             </button>
           </div>
 
-          {/* Inline Metrics Bar — the stat chips the user liked */}
-          <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-slate-100">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-primary/5 flex items-center justify-center">
-                <Zap className="w-4 h-4 text-secondary" />
+          {/* Animated Credibility Stats Grid */}
+          <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-100">
+            <div className="bg-slate-50/50 hover:bg-slate-50 p-5 rounded-2xl border border-slate-100 hover:border-slate-200 transition-all duration-300 group hover:-translate-y-0.5 shadow-[0_2px_15px_rgba(0,0,0,0.01)]">
+              <div className="flex items-center gap-2 mb-2">
+                <Zap className="w-5 h-5 text-secondary fill-secondary/20 shrink-0" />
+                <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-slate-500">Power Output</span>
               </div>
-              <div>
-                <p className="text-lg font-extrabold text-primary leading-none">500+</p>
-                <p className="text-[10px] text-slate-400 font-medium">Setups Done</p>
-              </div>
+              <p className="text-2xl md:text-3xl font-black text-primary tracking-tight leading-none">
+                <AnimatedNumber value={1000} suffix=" kW+" />
+              </p>
+              <p className="text-xs text-slate-400 mt-2 font-medium">Clean energy active</p>
             </div>
-            <div className="w-px h-8 bg-slate-100 hidden sm:block" />
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-primary/5 flex items-center justify-center">
-                <Users className="w-4 h-4 text-primary" />
+
+            <div className="bg-slate-50/50 hover:bg-slate-50 p-5 rounded-2xl border border-slate-100 hover:border-slate-200 transition-all duration-300 group hover:-translate-y-0.5 shadow-[0_2px_15px_rgba(0,0,0,0.01)]">
+              <div className="flex items-center gap-2 mb-2">
+                <Users className="w-5 h-5 text-primary fill-primary/10 shrink-0" />
+                <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-slate-500">Total Projects</span>
               </div>
-              <div>
-                <p className="text-lg font-extrabold text-primary leading-none">1,000+</p>
-                <p className="text-[10px] text-slate-400 font-medium">Happy Families</p>
-              </div>
-            </div>
-            <div className="w-px h-8 bg-slate-100 hidden sm:block" />
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-secondary/10 flex items-center justify-center">
-                <ShieldCheck className="w-4 h-4 text-accent" />
-              </div>
-              <div>
-                <p className="text-lg font-extrabold text-primary leading-none">MNRE</p>
-                <p className="text-[10px] text-slate-400 font-medium">Govt Approved</p>
-              </div>
+              <p className="text-2xl md:text-3xl font-black text-primary tracking-tight leading-none">
+                <AnimatedNumber value={240} suffix="+" />
+              </p>
+              <p className="text-xs text-slate-400 mt-2 font-medium">Completed setups in J&K</p>
             </div>
           </div>
 

@@ -94,11 +94,11 @@ export default function Header({ currentTab, onTabChange, onOpenQuote }: HeaderP
           </button>
           
           <a
-            href="#installations"
-            onClick={(e) => handleSectionClick(e, 'installations')}
+            href="#testimonials"
+            onClick={(e) => handleSectionClick(e, 'testimonials')}
             className="text-slate-500 hover:text-primary font-medium text-[13px] tracking-wide transition-colors duration-200 cursor-pointer"
           >
-            Installations
+            Testimonials
           </a>
 
           <button
@@ -176,11 +176,11 @@ export default function Header({ currentTab, onTabChange, onOpenQuote }: HeaderP
               </button>
 
               <a
-                href="#installations"
-                onClick={(e) => handleSectionClick(e, 'installations')}
+                href="#testimonials"
+                onClick={(e) => handleSectionClick(e, 'testimonials')}
                 className="text-left font-bold text-sm py-2 text-slate-600 border-b border-slate-50"
               >
-                Installations
+                Testimonials
               </a>
 
               <button

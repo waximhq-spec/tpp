@@ -56,8 +56,8 @@ export default function Footer() {
           <div className="space-y-3">
             <h4 className="text-[10px] uppercase font-bold text-accent tracking-widest">Company</h4>
             <ul className="space-y-2 text-xs">
-              <li><a href="/#installations" className="hover:text-white transition-colors">Solar Installations</a></li>
-              <li><a href="/#installations" className="hover:text-white transition-colors">Client Video Reels</a></li>
+              <li><a href="/#testimonials" className="hover:text-white transition-colors">Client Testimonials</a></li>
+              <li><a href="/#testimonials" className="hover:text-white transition-colors">Client Video Reels</a></li>
               <li><a href="https://solarrooftop.gov.in" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">MNRE Portal ↗</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
             </ul>

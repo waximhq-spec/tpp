@@ -8,6 +8,7 @@ import LatestProjects from '../components/LatestProjects';
 import TimelineAndTestimonials from '../components/TimelineAndTestimonials';
 import InquiryModal from '../components/InquiryModal';
 import Footer from '../components/Footer';
+import BrandCollab from '../components/BrandCollab';
 import { RooftopType } from '../types';
 
 export default function Home() {
@@ -90,6 +91,7 @@ export default function Home() {
 
       <main className="flex-grow">
         <Hero onGetQuote={handleOpenDefaultInquiry} />
+        <BrandCollab />
         <Stats />
         <LatestProjects />
         <TimelineAndTestimonials />

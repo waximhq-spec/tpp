@@ -29,13 +29,13 @@ export default function LatestProjects() {
   return (
     <section 
       ref={containerRef}
-      id="installations" 
+      id="testimonials" 
       className="py-24 bg-slate-950 relative overflow-hidden border-t border-slate-900"
     >
       {/* Visual background lights */}
       <div className="absolute top-0 right-1/4 -translate-y-1/2 -z-10 w-[500px] h-[500px] rounded-full bg-radial from-[#c6ebd9]/5 to-transparent blur-3xl opacity-40 pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 translate-y-1/2 -z-10 w-[400px] h-[400px] rounded-full bg-radial from-primary/10 to-transparent blur-3xl opacity-30 pointer-events-none" />
-
+ 
       <div className="max-w-7xl mx-auto px-4 md:px-10">
         
         {/* Header Block */}
@@ -43,13 +43,13 @@ export default function LatestProjects() {
           <div className="max-w-2xl text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/10 mb-4 backdrop-blur-md">
               <Instagram className="w-3.5 h-3.5 text-pink-500 animate-pulse" />
-              <span className="text-[10px] md:text-xs font-bold text-slate-300 uppercase tracking-widest">Recent Videos</span>
+              <span className="text-[10px] md:text-xs font-bold text-slate-300 uppercase tracking-widest">Client Testimonials</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight leading-none">
-              Completed Installations
+              What Our Clients Say
             </h2>
             <p className="text-slate-400 text-sm md:text-base mt-4 leading-relaxed">
-              Watch real videos of our solar systems installed in Kashmiri homes and businesses.
+              Watch real video reviews and testimonials from our clients sharing their experience.
             </p>
           </div>
           
