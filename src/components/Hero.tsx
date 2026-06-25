@@ -114,53 +114,6 @@ export default function Hero({ onGoToCalculator }: HeroProps) {
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
           </div>
 
-          {/* Floating Card 1 - Subsidy */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.4 }}
-            className="absolute top-4 right-4 backdrop-blur-md bg-white/90 border border-slate-100/50 shadow-lg p-2.5 rounded-xl flex items-center gap-2"
-          >
-            <div className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center text-amber-500 shrink-0">
-              <Sun className="w-4 h-4 fill-amber-500/20 text-amber-500" />
-            </div>
-            <div>
-              <p className="text-[8px] uppercase font-bold tracking-widest text-slate-400">Govt Grant</p>
-              <p className="text-xs font-extrabold text-primary">₹78,000 Off</p>
-            </div>
-          </motion.div>
-
-          {/* Floating Card 2 - Performance */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.5 }}
-            className="absolute bottom-4 right-4 backdrop-blur-md bg-white/90 border border-slate-100/50 shadow-lg p-2.5 rounded-xl flex items-center gap-2"
-          >
-            <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600 shrink-0">
-              <Banknote className="w-4 h-4 text-emerald-600" />
-            </div>
-            <div>
-              <p className="text-[8px] uppercase font-bold tracking-widest text-slate-400">Payback Time</p>
-              <p className="text-xs font-extrabold text-primary">Under 4 Years</p>
-            </div>
-          </motion.div>
-
-          {/* Floating Card 3 - Kashmir Specific */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.6 }}
-            className="absolute bottom-4 left-4 backdrop-blur-md bg-primary/95 border border-white/10 shadow-lg p-2.5 rounded-xl flex items-center gap-2"
-          >
-            <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-[#ffddb4] shrink-0">
-              <CloudSnow className="w-4 h-4 text-[#ffddb4]" />
-            </div>
-            <div>
-              <p className="text-[8px] uppercase font-bold tracking-widest text-primary-fixed-dim">Alpine Tech</p>
-              <p className="text-[10px] md:text-xs font-bold text-white">Snow-Resistant</p>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>
