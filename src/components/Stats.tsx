@@ -51,7 +51,7 @@ export default function Stats() {
         </div>
 
         {/* Highlight Main Stats Showcase Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-3 md:grid-cols-3 gap-2 md:gap-8 max-w-5xl mx-auto">
           {stats.map((stat, idx) => {
             const Icon = stat.icon;
             return (
@@ -61,22 +61,22 @@ export default function Stats() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-20px' }}
                 transition={{ duration: 0.4, delay: idx * 0.08 }}
-                className="bg-white border border-slate-100/80 hover:border-slate-200 shadow-[0_2px_15px_rgba(0,0,0,0.015)] hover:shadow-[0_8px_30px_rgba(1,50,32,0.04)] rounded-2xl p-6 transition-all duration-300 group hover:-translate-y-1 text-center sm:text-left flex flex-col justify-between"
+                className="bg-white border border-slate-100/80 hover:border-slate-200 shadow-[0_2px_15px_rgba(0,0,0,0.015)] hover:shadow-[0_8px_30px_rgba(1,50,32,0.04)] rounded-xl md:rounded-2xl p-2.5 md:p-6 transition-all duration-300 group hover:-translate-y-1 text-center md:text-left flex flex-col justify-between"
               >
                 <div>
-                  <div className={`w-10 h-10 rounded-xl ${stat.bg} flex items-center justify-center text-slate-400 group-hover:text-primary transition-colors duration-300 mx-auto sm:mx-0 mb-4`}>
-                    <Icon className="w-5 h-5 text-current" />
+                  <div className={`w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl ${stat.bg} flex items-center justify-center text-slate-400 group-hover:text-primary transition-colors duration-300 mx-auto md:mx-0 mb-2 md:mb-4`}>
+                    <Icon className="w-4 h-4 md:w-5 md:h-5 text-current" />
                   </div>
 
-                  <p className={`text-3xl font-black ${stat.color} tracking-tight leading-none`}>
+                  <p className={`text-sm sm:text-xl md:text-3xl font-black ${stat.color} tracking-tight leading-none`}>
                     {stat.value}
                   </p>
-                  <p className="text-xs font-extrabold text-primary tracking-wide mt-2">
+                  <p className="text-[9px] sm:text-xs font-bold md:font-extrabold text-primary tracking-tight mt-1.5 md:mt-2">
                     {stat.label}
                   </p>
                 </div>
                 
-                <p className="text-[11px] text-slate-400 leading-relaxed mt-4 pt-4 border-t border-slate-50">
+                <p className="hidden md:block text-[11px] text-slate-400 leading-relaxed mt-4 pt-4 border-t border-slate-50">
                   {stat.description}
                 </p>
               </motion.div>
