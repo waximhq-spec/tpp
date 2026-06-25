@@ -69,7 +69,7 @@ export default function LatestProjects() {
         <div className="relative w-full min-h-[500px] bg-slate-900/15 border border-slate-900 rounded-3xl backdrop-blur-xl p-6 md:p-10 flex flex-col items-center">
           
           {isInView ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 w-full justify-items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full justify-items-center">
               
               {/* Embed 1 Card */}
               <div className="w-full max-w-[420px] rounded-3xl overflow-hidden shadow-2xl border border-slate-900 bg-white/5 backdrop-blur-sm p-1.5 hover:scale-[1.01] transition-transform duration-300 flex justify-center">
@@ -104,11 +104,22 @@ export default function LatestProjects() {
                 />
               </div>
 
+              {/* Embed 4 Card */}
+              <div className="w-full max-w-[420px] rounded-3xl overflow-hidden shadow-2xl border border-slate-900 bg-white/5 backdrop-blur-sm p-1.5 hover:scale-[1.01] transition-transform duration-300 flex justify-center">
+                <iframe
+                  src="https://www.instagram.com/reel/DYEw22ISCwR/embed/"
+                  className="w-full h-[480px] md:h-[540px] border-0 rounded-2xl bg-white"
+                  scrolling="no"
+                  allowFullScreen
+                  title="Instagram Reel - Srinagar Complete Solar"
+                />
+              </div>
+
             </div>
           ) : (
             /* Skeleton Loading State before scroll entrance */
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full justify-items-center">
-              {[1, 2, 3].map((n) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full justify-items-center">
+              {[1, 2, 3, 4].map((n) => (
                 <div key={n} className="bg-slate-900/40 rounded-3xl p-5 border border-slate-800/40 w-full max-w-[420px] space-y-4 animate-pulse">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-slate-800 rounded-full" />
