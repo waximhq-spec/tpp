@@ -102,7 +102,7 @@ export default function Hero({ onGoToCalculator }: HeroProps) {
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:col-span-6 relative w-full h-[240px] sm:h-[320px] lg:h-[420px] flex items-center justify-center"
+          className="hidden lg:flex lg:col-span-6 relative w-full h-[240px] sm:h-[320px] lg:h-[420px] items-center justify-center"
         >
           {/* Main Photo Frame */}
           <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-xl border border-slate-100/50 group bg-slate-50">

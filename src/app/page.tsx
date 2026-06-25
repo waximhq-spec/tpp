@@ -104,6 +104,17 @@ export default function Home() {
         initialData={inquiryData}
       />
 
+      {/* Floating Call Button */}
+      <a
+        href="tel:+917889880188"
+        className="fixed bottom-22 right-4 md:right-6 z-40 bg-primary hover:bg-primary/90 text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center cursor-pointer border border-white/10"
+        aria-label="Call us directly"
+      >
+        <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+          <path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.11-.27 11.36 11.36 0 0 0 4.25 1.21 1 1 0 0 1 .91 1v3.5a1 1 0 0 1-1 1A16 16 0 0 1 3 6a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 .91 11.36 11.36 0 0 0 1.21 4.25 1 1 0 0 1-.27 1.11z" />
+        </svg>
+      </a>
+
       {/* Floating WhatsApp Button */}
       <a
         href="https://wa.me/917889880188?text=Hi,%20I'm%20interested%20in%20solar%20rooftop%20installations%20for%20my%20property%20in%20Kashmir."
