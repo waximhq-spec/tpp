@@ -10,6 +10,7 @@ import InquiryModal from '../components/InquiryModal';
 import Footer from '../components/Footer';
 import BrandCollab from '../components/BrandCollab';
 import ServicesSupport from '../components/ServicesSupport';
+import Installations from '../components/Installations';
 import { RooftopType } from '../types';
 
 export default function Home() {
@@ -95,6 +96,7 @@ export default function Home() {
         <BrandCollab />
         <Stats />
         <LatestProjects />
+        <Installations />
         <ServicesSupport />
         <TimelineAndTestimonials />
       </main>

@@ -1,56 +1,48 @@
 "use client";
 
 import { motion } from 'motion/react';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-import { Play, MapPin, Zap } from 'lucide-react';
+import { Play } from 'lucide-react';
 
-export default function InstallationsPage() {
+export default function Installations() {
   const installations = [
     {
       id: 1,
-      title: "Residential Solar Setup",
-      location: "Srinagar, J&K",
-      type: "5 kW Hybrid System",
+      title: "Home Rooftop Installation",
       vimeoId: "" // Paste Vimeo ID here (e.g. "1204853545")
     },
     {
       id: 2,
-      title: "Home Backup Installation",
-      location: "Anantnag, J&K",
-      type: "8.5 kW Hybrid System",
+      title: "Home Rooftop Installation",
       vimeoId: "" // Paste Vimeo ID here
     },
     {
       id: 3,
-      title: "Rooftop Solar Install",
-      location: "Baramulla, J&K",
-      type: "10 kW On-Grid System",
+      title: "Home Rooftop Installation",
       vimeoId: "" // Paste Vimeo ID here
     },
     {
       id: 4,
-      title: "Off-Grid Battery Setup",
-      location: "Pulwama, J&K",
-      type: "6 kW Hybrid System",
+      title: "Home Rooftop Installation",
       vimeoId: "" // Paste Vimeo ID here
     }
   ];
 
   return (
-    <div className="bg-[#fcfdfd] text-primary min-h-screen font-sans flex flex-col selection:bg-secondary/20 pb-16 md:pb-0">
-      <Header currentTab="installations" onOpenQuote={() => {}} />
+    <section id="installations" className="py-20 bg-white border-t border-slate-100 relative overflow-hidden">
+      {/* Background soft glowing circle */}
+      <div className="absolute right-0 top-0 -z-10 w-[300px] h-[300px] rounded-full bg-radial from-[#c6ebd9]/10 to-transparent blur-3xl opacity-30 pointer-events-none" />
 
-      <main className="flex-grow py-24 md:py-32 px-4 md:px-10 max-w-7xl mx-auto w-full">
-        {/* Page Header */}
+      <div className="max-w-7xl mx-auto px-4 md:px-10">
+        
+        {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/5 rounded-full border border-primary/10 mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
-            <span className="text-[10px] md:text-xs font-bold text-primary uppercase tracking-widest">Our Projects</span>
+            <span className="text-[10px] md:text-xs font-bold text-primary uppercase tracking-widest">Our Work</span>
           </div>
-          <h1 className="text-3xl md:text-5xl font-black text-primary tracking-tight leading-tight">
+          <h2 className="text-3xl md:text-4xl text-primary font-black tracking-tight leading-tight">
             Completed Installations
-          </h1>
+          </h2>
           <p className="text-slate-500 text-sm mt-3 leading-relaxed">
             Real solar installations across Jammu & Kashmir. Explore our work in action.
           </p>
@@ -63,7 +55,7 @@ export default function InstallationsPage() {
               key={project.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-20px' }}
               transition={{ duration: 0.4, delay: idx * 0.08 }}
               className="bg-white border border-slate-100 hover:border-slate-200/80 shadow-[0_2px_15px_rgba(0,0,0,0.01)] hover:shadow-[0_8px_30px_rgba(1,50,32,0.03)] rounded-2xl p-3 transition-all duration-300 flex flex-col"
             >
@@ -93,28 +85,16 @@ export default function InstallationsPage() {
               </div>
 
               {/* Project Info */}
-              <div className="pt-4 pb-2 px-1">
+              <div className="pt-4 pb-2 px-1 text-center">
                 <h3 className="text-sm font-bold text-primary tracking-tight">
                   {project.title}
                 </h3>
-                
-                <div className="mt-2.5 flex flex-col gap-1.5">
-                  <div className="flex items-center gap-1.5 text-xs text-slate-500">
-                    <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                    <span>{project.location}</span>
-                  </div>
-                  <div className="flex items-center gap-1.5 text-xs text-slate-500">
-                    <Zap className="w-3.5 h-3.5 text-secondary shrink-0" />
-                    <span>{project.type}</span>
-                  </div>
-                </div>
               </div>
             </motion.div>
           ))}
         </div>
-      </main>
 
-      <Footer />
-    </div>
+      </div>
+    </section>
   );
 }

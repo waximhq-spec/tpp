@@ -101,21 +101,13 @@ export default function Header({ currentTab, onTabChange, onOpenQuote }: HeaderP
             Testimonials
           </a>
 
-          <button
-            onClick={() => handleNavClick({ id: 'installations', label: 'Installations', path: '/installations' })}
-            className={`relative py-1 font-medium text-[13px] tracking-wide transition-colors duration-200 cursor-pointer ${
-              currentTab === 'installations' ? 'text-primary font-bold' : 'text-slate-500 hover:text-primary'
-            }`}
+          <a
+            href="#installations"
+            onClick={(e) => handleSectionClick(e, 'installations')}
+            className="text-slate-500 hover:text-primary font-medium text-[13px] tracking-wide transition-colors duration-200 cursor-pointer"
           >
             Installations
-            {currentTab === 'installations' && (
-              <motion.div
-                layoutId="activeTabIndicator"
-                className="absolute -bottom-1 left-0 right-0 h-0.5 bg-secondary"
-                transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-              />
-            )}
-          </button>
+          </a>
 
           <button
             onClick={() => handleNavClick({ id: 'contact', label: 'Contact Us', path: '/contact' })}
@@ -199,14 +191,13 @@ export default function Header({ currentTab, onTabChange, onOpenQuote }: HeaderP
                 Testimonials
               </a>
 
-              <button
-                onClick={() => handleNavClick({ id: 'installations', label: 'Installations', path: '/installations' })}
-                className={`text-left font-bold text-sm py-2 border-b border-slate-50 transition-colors ${
-                  currentTab === 'installations' ? 'text-primary pl-2' : 'text-slate-600'
-                }`}
+              <a
+                href="#installations"
+                onClick={(e) => handleSectionClick(e, 'installations')}
+                className="text-left font-bold text-sm py-2 text-slate-600 border-b border-slate-50"
               >
                 Installations
-              </button>
+              </a>
 
               <button
                 onClick={() => handleNavClick({ id: 'contact', label: 'Contact Us', path: '/contact' })}
