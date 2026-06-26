@@ -52,7 +52,7 @@ export default function BrandCollab() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.05 }}
-              className="h-14 md:h-18 flex items-center justify-center filter grayscale opacity-55 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer"
+              className="h-14 md:h-18 flex items-center justify-center hover:scale-105 transition-all duration-300 cursor-pointer"
             >
               <img
                 src={brand.url}

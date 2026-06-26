@@ -66,7 +66,7 @@ export default function Footer() {
           <div className="space-y-3">
             <h4 className="text-[10px] uppercase font-bold text-secondary tracking-widest">Service Areas</h4>
             <div className="flex flex-wrap gap-1 max-w-xs">
-              {['Srinagar', 'Ganderbal', 'Anantnag', 'Baramulla', 'Budgam', 'Pulwama', 'Kupwara', 'Jammu'].map((loc) => (
+              {['Srinagar', 'Ganderbal', 'Anantnag', 'Baramulla', 'Budgam', 'Pulwama', 'Kupwara'].map((loc) => (
                 <span key={loc} className="text-[10px] bg-white/5 px-2 py-0.5 rounded text-white/40">
                   {loc}
                 </span>

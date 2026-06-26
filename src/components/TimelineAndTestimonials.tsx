@@ -5,20 +5,20 @@ export default function TimelineAndTestimonials() {
   const testimonials = [
     {
       quote: "During Chillai Kalan winter snowstorms, our sloped solar system shed snow automatically within hours of sunrise. We saved ₹38,000 in bills in 10 months.",
-      author: "Bashir Ahmed Lone",
-      role: "Orchard Owner, Srinagar",
+      author: "Bashir A.",
+      role: "Homeowner",
       tags: ["Tin Roof", "5.5 kWp"]
     },
     {
-      quote: "Reliable power is crucial for guest heating. The hybrid battery setup kept our radiator heaters running perfectly during intense winter grid blackouts.",
-      author: "Tariq Malik",
-      role: "Resort Manager, Pahalgam",
+      quote: "Reliable power is crucial for winter heating. The hybrid battery setup kept our radiator heaters running perfectly during intense winter grid blackouts.",
+      author: "Tariq M.",
+      role: "Homeowner",
       tags: ["Wooden", "8.0 kWp Hybrid"]
     },
     {
-      quote: "Our Karan Nagar complex cold storage is completely powered by the 12 kW array. Payback period is on track to hit just 3.7 years.",
-      author: "Dr. Farooq Shah",
-      role: "Commercial Director, Karan Nagar",
+      quote: "Our home setup is completely powered by the 12 kW array. Payback period is on track to hit just 3.7 years.",
+      author: "Dr. Farooq S.",
+      role: "Homeowner",
       tags: ["Concrete", "12.0 kWp"]
     }
   ];

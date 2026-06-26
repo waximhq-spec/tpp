@@ -9,6 +9,7 @@ import TimelineAndTestimonials from '../components/TimelineAndTestimonials';
 import InquiryModal from '../components/InquiryModal';
 import Footer from '../components/Footer';
 import BrandCollab from '../components/BrandCollab';
+import ServicesSupport from '../components/ServicesSupport';
 import { RooftopType } from '../types';
 
 export default function Home() {
@@ -34,27 +35,27 @@ export default function Home() {
     const mockLeads = [
       {
         id: 'KSL-408921',
-        name: 'Bashir Ahmed Lone',
+        name: 'Bashir A.',
         phone: '+91 94190 XXXXX',
-        email: 'bashir@loneorchards.com',
+        email: 'bashir.a@example.com',
         district: 'Srinagar',
         bill: 3800,
         roofType: 'tin',
         systemSize: 4.0,
         subsidy: 78000,
-        address: 'Nishat, Srinagar'
+        address: 'Srinagar, J&K'
       },
       {
         id: 'KSL-912048',
-        name: 'Gulzar Ahmad Wani',
+        name: 'Gulzar W.',
         phone: '+91 99066 XXXXX',
-        email: 'gulzar.wani@gmail.com',
+        email: 'gulzar.w@example.com',
         district: 'Anantnag',
         bill: 2500,
         roofType: 'concrete',
         systemSize: 2.5,
         subsidy: 69000,
-        address: 'Khanabal, Anantnag'
+        address: 'Anantnag, J&K'
       }
     ];
 
@@ -94,6 +95,7 @@ export default function Home() {
         <BrandCollab />
         <Stats />
         <LatestProjects />
+        <ServicesSupport />
         <TimelineAndTestimonials />
       </main>
 
