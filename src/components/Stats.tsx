@@ -4,7 +4,7 @@ import { ShieldCheck, Award, Zap, Users, Home, BarChart3, TrendingDown } from 'l
 export default function Stats() {
   const stats = [
     {
-      value: '1,250+',
+      value: '240+',
       label: 'Homes & Shops Powered',
       description: 'Kashmiri properties operating independently with reliable electricity day and night.',
       icon: Home,
