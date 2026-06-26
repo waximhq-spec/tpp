@@ -94,7 +94,7 @@ export default function ServicesSupport() {
                 />
               </div>
               <p className="text-center text-[10px] text-slate-400 mt-2.5 font-semibold tracking-wide uppercase">
-                Our Service Center & Testing Lab Video
+                Our Service Center Video
               </p>
             </div>
           </motion.div>
