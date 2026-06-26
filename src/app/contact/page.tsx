@@ -21,12 +21,19 @@ import {
 } from 'lucide-react';
 import { RooftopType } from '../../types';
 
+const getBillRangeLabel = (billValue: number) => {
+  if (billValue <= 2000) return 'Under ₹2,000';
+  if (billValue <= 5000) return '₹2,000 - ₹5,000';
+  if (billValue <= 8000) return '₹5,000 - ₹8,000';
+  if (billValue <= 12000) return '₹8,000 - ₹12,000';
+  return 'Above ₹12,000';
+};
+
 export default function ContactPage() {
   const [isInquiryOpen, setIsInquiryOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    email: '',
     bill: 3500,
     roofType: 'tin' as RooftopType,
     message: ''
@@ -55,7 +62,6 @@ export default function ContactPage() {
       id: `KSL-${Math.floor(100000 + Math.random() * 900000)}`,
       name: formData.name,
       phone: formData.phone,
-      email: formData.email,
       district: 'Srinagar',
       bill: formData.bill,
       roofType: formData.roofType,
@@ -78,11 +84,8 @@ export default function ContactPage() {
       const text = `Hi, I have filled out the solar inquiry form on the website with the following details:
 - *Name:* ${formData.name}
 - *Phone:* ${formData.phone}
-- *Email:* ${formData.email}
-- *Monthly Bill:* ₹${formData.bill.toLocaleString('en-IN')}
+- *Monthly Bill:* ${getBillRangeLabel(formData.bill)}
 - *Roof Type:* ${formData.roofType.toUpperCase()}
-- *Estimated System Size:* ${systemSize} kW
-- *Estimated Subsidy:* ₹${subsidy.toLocaleString('en-IN')}
 - *Message:* ${formData.message || 'None'}`;
       
       const whatsappUrl = `https://wa.me/919541831565?text=${encodeURIComponent(text)}`;
@@ -281,23 +284,9 @@ export default function ContactPage() {
                       </div>
                     </div>
 
-                    <div className="space-y-1">
-                      <label htmlFor="email" className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Email Address</label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        placeholder="name@domain.com"
-                        className="w-full bg-[#fafbfa] border border-slate-200 hover:border-slate-300 focus:border-primary focus:bg-white text-slate-800 placeholder-slate-400 text-xs rounded-xl px-4 py-3 focus:outline-none transition-all duration-200"
-                      />
-                    </div>
-
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-1">
-                        <label htmlFor="bill" className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Monthly Bill (₹): ₹{formData.bill.toLocaleString()}</label>
+                        <label htmlFor="bill" className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Monthly Bill: {getBillRangeLabel(formData.bill)}</label>
                         <select
                           id="bill"
                           name="bill"
