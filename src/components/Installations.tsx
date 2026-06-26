@@ -8,22 +8,22 @@ export default function Installations() {
     {
       id: 1,
       title: "Home Rooftop Installation",
-      vimeoId: "" // Paste Vimeo ID here (e.g. "1204853545")
+      vimeoId: "1204861514"
     },
     {
       id: 2,
       title: "Home Rooftop Installation",
-      vimeoId: "" // Paste Vimeo ID here
+      vimeoId: "1204862091"
     },
     {
       id: 3,
       title: "Home Rooftop Installation",
-      vimeoId: "" // Paste Vimeo ID here
+      vimeoId: "1204861778"
     },
     {
       id: 4,
       title: "Home Rooftop Installation",
-      vimeoId: "" // Paste Vimeo ID here
+      vimeoId: "1204861667"
     }
   ];
 
