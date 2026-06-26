@@ -4,22 +4,22 @@ import { Quote, UserCheck } from 'lucide-react';
 export default function TimelineAndTestimonials() {
   const testimonials = [
     {
-      quote: "During Chillai Kalan winter snowstorms, our sloped solar system shed snow automatically within hours of sunrise. We saved ₹38,000 in bills in 10 months.",
+      quote: "We don't have electricity issues anymore. Even during winter, the solar panels work great and we are saving a lot on our bills.",
       author: "Bashir A.",
       role: "Homeowner",
-      tags: ["Tin Roof", "5.5 kWp"]
+      tags: ["Tin Roof", "Solar Backup"]
     },
     {
-      quote: "Reliable power is crucial for winter heating. The hybrid battery setup kept our radiator heaters running perfectly during intense winter grid blackouts.",
+      quote: "The battery backup is excellent. We can run our heaters and other appliances easily during long power cuts without any trouble.",
       author: "Tariq M.",
       role: "Homeowner",
-      tags: ["Wooden", "8.0 kWp Hybrid"]
+      tags: ["Wooden Roof", "Battery Backup"]
     },
     {
-      quote: "Our home setup is completely powered by the 12 kW array. Payback period is on track to hit just 3.7 years.",
+      quote: "Highly satisfied with the setup. We run almost all our home appliances on solar now and haven't faced any problems.",
       author: "Dr. Farooq S.",
       role: "Homeowner",
-      tags: ["Concrete", "12.0 kWp"]
+      tags: ["Concrete Roof", "Solar System"]
     }
   ];
 
