@@ -11,6 +11,7 @@ import Footer from '../components/Footer';
 import BrandCollab from '../components/BrandCollab';
 import ServicesSupport from '../components/ServicesSupport';
 import Installations from '../components/Installations';
+import MapSection from '../components/MapSection';
 import { RooftopType } from '../types';
 
 export default function Home() {
@@ -99,6 +100,7 @@ export default function Home() {
         <Installations />
         <ServicesSupport />
         <TimelineAndTestimonials />
+        <MapSection />
       </main>
 
       <Footer />
@@ -109,6 +111,20 @@ export default function Home() {
         onClose={() => setIsInquiryOpen(false)}
         initialData={inquiryData}
       />
+
+      {/* Floating Location Button */}
+      <a
+        href="https://www.google.com/maps/place/The+Power+Planet+(Solar,+Batteries,+Inverter)+Super+Stockiest+and+Genus+Service+Center/@34.0679266,74.7883813,17z/data=!3m1!4b1!4m6!3m5!1s0x38e18f56116e1c17:0x1dcadcb73cab759b!8m2!3d34.0679266!4d74.7883813!16s%2Fg%2F11wspyy1n5"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-[152px] right-4 md:right-6 z-40 bg-[#EA4335] hover:bg-[#d62516] text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center cursor-pointer border border-white/10"
+        aria-label="Find us on Google Maps"
+      >
+        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
+      </a>
 
       {/* Floating Call Button */}
       <a

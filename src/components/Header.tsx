@@ -53,7 +53,19 @@ export default function Header({ currentTab, onTabChange, onOpenQuote }: HeaderP
         window.location.href = `/#${sectionId}`;
       } else {
         const el = document.getElementById(sectionId);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
+        if (el) {
+          // Delay scroll slightly to allow mobile menu closing transition to not interfere with scroll
+          setTimeout(() => {
+            const headerOffset = 64; // approximate height of sticky header
+            const elementPosition = el.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.scrollY - headerOffset;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }, 100);
+        }
       }
     }
   };
