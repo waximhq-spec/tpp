@@ -43,34 +43,61 @@ export default function ServicesSupport() {
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {services.map((service, idx) => {
-            const Icon = service.icon;
-            return (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-20px' }}
-                transition={{ duration: 0.4, delay: idx * 0.08 }}
-                className="bg-white border border-slate-100 hover:border-slate-200/80 shadow-[0_2px_15px_rgba(0,0,0,0.01)] hover:shadow-[0_8px_30px_rgba(1,50,32,0.03)] rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between group"
-              >
-                <div>
-                  <div className="w-11 h-11 rounded-xl bg-primary/5 text-primary flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                    <Icon className="w-5.5 h-5.5" />
+        {/* Side-by-Side Services & Video Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center max-w-6xl mx-auto">
+          {/* Services List (Left) */}
+          <div className="lg:col-span-7 space-y-5">
+            {services.map((service, idx) => {
+              const Icon = service.icon;
+              return (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: '-20px' }}
+                  transition={{ duration: 0.4, delay: idx * 0.1 }}
+                  className="bg-white border border-slate-100 hover:border-slate-200/80 shadow-[0_2px_15px_rgba(0,0,0,0.01)] hover:shadow-[0_8px_30px_rgba(1,50,32,0.03)] rounded-2xl p-5 md:p-6 transition-all duration-300 flex items-start gap-4 group"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-primary/5 text-primary flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+                    <Icon className="w-5 h-5" />
                   </div>
-                  
-                  <h3 className="text-base font-bold text-primary tracking-tight mb-2.5">
-                    {service.title}
-                  </h3>
-                  <p className="text-slate-500 text-xs leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
+                  <div>
+                    <h3 className="text-sm md:text-base font-bold text-primary tracking-tight mb-1">
+                      {service.title}
+                    </h3>
+                    <p className="text-slate-500 text-xs md:text-sm leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* Video Block (Right) */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-5"
+          >
+            <div className="bg-white border border-slate-100 shadow-md hover:shadow-lg rounded-2xl p-3 transition-all duration-300">
+              <div className="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-black shadow-inner">
+                <iframe 
+                  src="https://player.vimeo.com/video/1204853545?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+                  frameBorder="0" 
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                  referrerPolicy="strict-origin-when-cross-origin" 
+                  className="absolute top-0 left-0 w-full h-full"
+                  title="Our Service Center Video"
+                />
+              </div>
+              <p className="text-center text-[10px] text-slate-400 mt-2.5 font-semibold tracking-wide uppercase">
+                Our Service Center & Testing Lab Video
+              </p>
+            </div>
+          </motion.div>
         </div>
 
         {/* Support CTA Callout */}
