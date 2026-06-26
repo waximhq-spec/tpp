@@ -26,7 +26,7 @@ export default function MapSection() {
             </h2>
             
             <p className="text-slate-500 text-sm leading-relaxed">
-              Drop by our super stockiest outlet and service center in Srinagar. Meet our technicians, inspect our high-efficiency solar modules, and plan your solar energy transition.
+              Drop by our main Srinagar showroom and service center. Meet our friendly team, see our solar panels and batteries in person, and get a simple, step-by-step plan to save on your electricity bills.
             </p>
 
             <div className="space-y-4 pt-2">
