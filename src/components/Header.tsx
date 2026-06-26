@@ -59,7 +59,7 @@ export default function Header({ currentTab, onTabChange, onOpenQuote }: HeaderP
   };
 
   return (
-    <header className={`sticky top-0 w-full z-45 transition-all duration-300 ${
+    <header className={`sticky top-0 w-full z-50 transition-all duration-300 ${
       isScrolled 
         ? 'bg-white/75 backdrop-blur-md border-b border-slate-100/80 shadow-[0_2px_20px_rgba(1,50,32,0.02)]' 
         : 'bg-white border-b border-slate-50'
