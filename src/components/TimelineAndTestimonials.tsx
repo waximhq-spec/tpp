@@ -26,7 +26,7 @@ export default function TimelineAndTestimonials() {
 
 
   return (
-    <section className="py-16 md:py-24 bg-slate-50/50 border-t border-slate-100 relative overflow-hidden">
+    <section id="testimonials" className="py-16 md:py-24 bg-slate-50/50 border-t border-slate-100 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-10">
         
         {/* Testimonials */}
