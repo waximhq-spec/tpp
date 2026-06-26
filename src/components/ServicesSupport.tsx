@@ -85,7 +85,7 @@ export default function ServicesSupport() {
             <div className="bg-white border border-slate-100 shadow-md hover:shadow-lg rounded-2xl p-3 transition-all duration-300 w-full max-w-[340px] mx-auto">
               <div className="relative aspect-[9/16] w-full rounded-xl overflow-hidden bg-black shadow-inner">
                 <iframe 
-                  src="https://player.vimeo.com/video/1204853545?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+                  src="https://player.vimeo.com/video/1204853545?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
                   frameBorder="0" 
                   allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
                   referrerPolicy="strict-origin-when-cross-origin" 
