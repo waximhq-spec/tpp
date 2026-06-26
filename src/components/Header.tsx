@@ -70,9 +70,14 @@ export default function Header({ currentTab, onTabChange, onOpenQuote }: HeaderP
           className="flex items-center cursor-pointer group animate-fade-in"
           id="brand-logo"
         >
-          <span className="text-sm md:text-base font-black tracking-wider text-primary group-hover:text-secondary transition-colors duration-300">
-            THE POWER PLANET
-          </span>
+          {/* Logo container to crop top and bottom white space */}
+          <div className="relative h-10 w-44 overflow-hidden flex items-center justify-center">
+            <img 
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLSMT4fL-UMSbtxivZ2iBcxg4UBewBxwGMpCRUUD2Ox2TNjppa4RK4LfPz&s=10" 
+              alt="The Power Planet"
+              className="absolute max-h-[170%] min-h-[160%] w-auto object-contain object-center scale-[1.3] -translate-y-[1%] mix-blend-multiply"
+            />
+          </div>
         </div>
 
         {/* Desktop Nav Links */}
