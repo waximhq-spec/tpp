@@ -1,45 +1,10 @@
-import { ShieldAlert, Heart, Leaf, Mail, Phone, MapPin, Send } from 'lucide-react';
+import { ShieldAlert, Heart, Leaf, Mail, Phone, MapPin } from 'lucide-react';
 
 export default function Footer() {
-  const handleSubmitNewsletter = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert('Thank you for subscribing to our energy newsletter!');
-  };
-
   return (
     <footer className="bg-primary text-white pt-16 pb-10 px-4 md:px-10 border-t border-primary-container relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
-        {/* Top: Brand + Newsletter */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
-          
-          <div className="lg:col-span-5 space-y-3">
-            <span className="text-base font-black tracking-wider text-white block">
-              THE POWER PLANET
-            </span>
-            <p className="text-white/50 text-xs max-w-sm leading-relaxed">
-              Kashmir&apos;s trusted solar partner. Installing durable, snow-resistant solar systems optimized for cold winter climates.
-            </p>
-          </div>
-
-          <div className="lg:col-span-7 space-y-3">
-            <h4 className="text-sm font-semibold text-white">Get Subsidy Updates</h4>
-            <p className="text-white/40 text-xs max-w-sm">Real-time alerts on JKPDD rooftop guidelines, solar projects, and grant availability.</p>
-            <form onSubmit={handleSubmitNewsletter} className="flex max-w-md gap-2">
-              <input
-                type="email"
-                required
-                placeholder="Enter your email"
-                className="flex-grow bg-white/5 hover:bg-white/10 focus:bg-white/10 text-white placeholder-white/30 text-xs rounded-xl px-4 py-2.5 border border-white/10 focus:border-secondary focus:outline-none transition-all duration-200"
-              />
-              <button type="submit" className="bg-secondary hover:bg-secondary/90 text-white font-semibold text-xs px-4 py-2.5 rounded-xl flex items-center gap-1.5 transition-colors cursor-pointer">
-                <span>Subscribe</span>
-                <Send className="w-3 h-3" />
-              </button>
-            </form>
-          </div>
-        </div>
-
         {/* Links Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-10 text-white/50">
           
