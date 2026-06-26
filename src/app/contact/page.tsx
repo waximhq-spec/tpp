@@ -227,7 +227,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-[9px] uppercase font-bold text-slate-400">Office Address</p>
-                    <p className="text-sm font-bold text-primary mt-0.5">Sanat Nagar, Srinagar, J&amp;K 190005</p>
+                    <p className="text-sm font-bold text-primary mt-0.5">Firdousabad, Batamaloo, Srinagar, J&amp;K 190009</p>
                     <p className="text-[10px] text-slate-400">Open Mon - Sat (10:00 AM - 6:00 PM)</p>
                   </div>
                 </div>

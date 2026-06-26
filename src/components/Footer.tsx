@@ -79,7 +79,7 @@ export default function Footer() {
             <ul className="space-y-2.5 text-xs">
               <li className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 text-secondary shrink-0 mt-0.5" />
-                <span>Sanat Nagar, Srinagar, J&amp;K 190005</span>
+                <span>Firdousabad, Batamaloo, Srinagar, J&amp;K 190009</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-secondary shrink-0" />

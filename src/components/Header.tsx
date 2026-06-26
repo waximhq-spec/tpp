@@ -71,11 +71,11 @@ export default function Header({ currentTab, onTabChange, onOpenQuote }: HeaderP
           id="brand-logo"
         >
           {/* Logo container to crop top and bottom white space */}
-          <div className="relative h-10 w-44 overflow-hidden flex items-center justify-center">
+          <div className="relative h-10 w-32 md:w-40 overflow-hidden flex items-center">
             <img 
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLSMT4fL-UMSbtxivZ2iBcxg4UBewBxwGMpCRUUD2Ox2TNjppa4RK4LfPz&s=10" 
               alt="The Power Planet"
-              className="absolute max-h-[170%] min-h-[160%] w-auto object-contain object-center scale-[1.3] -translate-y-[1%] mix-blend-multiply"
+              className="absolute left-0 max-h-[170%] min-h-[160%] w-auto object-contain object-left scale-[1.3] origin-left -translate-y-[1%] mix-blend-multiply"
             />
           </div>
         </div>
